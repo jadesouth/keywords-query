@@ -371,6 +371,22 @@ if ( ! is_php('5.4'))
 		require_once APPPATH.'core/'.$CFG->config['subclass_prefix'].'Controller.php';
 	}
 
+	/* 为前后台分离设置,加载前台的基础类 start */
+	// 加载前台控制器基类 Home_Controller
+	if (file_exists(APPPATH . 'controllers/Home_Controller.php'))
+	{
+		require_once APPPATH . 'controllers/Home_Controller.php';
+	}
+	/* 为前后台分离设置,加载前台的基础类 end */
+
+	/* 为前后台分离设置,加载后台的基础类 start */
+	// 加载后台控制器基类 Admin_Controller
+	if (file_exists(APPPATH . 'controllers/admin/Admin_Controller.php'))
+	{
+		require_once APPPATH . 'controllers/admin/Admin_Controller.php';
+	}
+	/* 为前后台分离设置,加载后台的基础类 end */
+
 	// Set a mark point for benchmarking
 	$BM->mark('loading_time:_base_classes_end');
 
