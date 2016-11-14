@@ -201,18 +201,22 @@ class MY_Model extends CI_Model
      * find 根据数据表的ID查询一条数据
      *
      * @param int $id 数据ID
+     * @param bool  $clean_up 是否清理查询条件和查询数据,默认清理
      * @return array|bool 查询的结果集
      *
      * @author wangnan <wangnanphp@163.com>
      * @date   2016-11-13 00:22:55
      */
-    public function find(int $id)
+    public function find(int $id, bool $clean_up = true)
     {
         if (0 >= $id) {
             return false;
         }
 
-        return $this->db->select($this->_selectFields)
+        $select_fields = $this->_selectFields;
+        true === $clean_up && $this->_selectFields = 'id';
+
+        return $this->db->select($select_fields)
             ->from($this->_table)
             ->where(['id' => $id, 'deleted_at' => '0000-00-00 00:00:00'])
             ->limit(1)
@@ -223,7 +227,7 @@ class MY_Model extends CI_Model
     /**
      * get 根据条件获取一条数据
      *
-     * @param bool $clean_up 是否清理查询条件,默认清理
+     * @param bool $clean_up 是否清理查询条件和查询字段,默认清理
      * @return array 数组结果集
      *
      * @author wangnan <wangnanphp@163.com>
@@ -232,9 +236,11 @@ class MY_Model extends CI_Model
     public function get(bool $clean_up = true)
     {
         $this->conditions($clean_up);
-
         $this->db->limit(1);
-        return $this->db->select($this->_selectFields)
+        $select_fields = $this->_selectFields;
+        true === $clean_up && $this->_selectFields = 'id';
+
+        return $this->db->select($select_fields)
             ->from($this->_table)
             ->get()
             ->row_array();
@@ -243,7 +249,7 @@ class MY_Model extends CI_Model
     /**
      * read 根据条件获取一组数据
      *
-     * @param bool $clean_up 是否清理查询条件,默认清理
+     * @param bool $clean_up 是否清理查询条件和查询字段,默认清理
      * @return array 二维结果集数组
      *
      * @author wangnan <wangnanphp@163.com>
@@ -252,8 +258,10 @@ class MY_Model extends CI_Model
     public function read(bool $clean_up = true)
     {
         $this->conditions($clean_up);
+        $select_fields = $this->_selectFields;
+        true === $clean_up && $this->_selectFields = 'id';
 
-        return $this->db->select($this->_selectFields)
+        return $this->db->select($select_fields)
             ->from($this->_table)
             ->get()
             ->result_array();
