@@ -46,16 +46,13 @@ class Admin_model extends MY_Model
         if(0 >= $id ) {
             return false;
         }
-        echo 3;
         $this->load->helper(['tools', 'security']);
         $this->_updateData['status'] = $this->_updateData['lock']; // 状态[0:正常,1:禁止]
         unset($this->_updateData['lock']);
-        echo 4;
         if(! empty($this->_updateData['password'])) {
             $this->_updateData['salt'] = random_characters();
             $this->_updateData['password'] = generate_admin_password($this->_updateData['password'], $this->_updateData['salt']);
         }
-        echo 5;
         $this->_conditions['AND']['id ='] = $id;
         return $this->update();
     }
