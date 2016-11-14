@@ -1,3 +1,18 @@
+-- Table: `admin` 管理员表
+CREATE TABLE IF NOT EXISTS `admin` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'PK',
+  `login_name` VARCHAR(30) NOT NULL DEFAULT '' COMMENT '登录名',
+  `password` CHAR(32) NOT NULL DEFAULT '' COMMENT '加密后的登录密码',
+  `salt` CHAR(6) NOT NULL DEFAULT '' COMMENT '密码加密盐值',
+  `status` TINYINT NOT NULL DEFAULT 0 COMMENT '状态[0:正常,1:禁用]',
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `deleted_at` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '删除时间',
+  PRIMARY KEY (`id`),
+  KEY `login_name` (`login_name`)
+) ENGINE=InooDB DEFAULT CHARSET=utf8 COMMENT '管理员表';
+
+-- Table: `user` 用户表
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'PK',
   `login_name` VARCHAR(30) NOT NULL DEFAULT '' COMMENT '登录名',
@@ -11,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   KEY `deleted_at` (`deleted_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '用户表';
 
+-- Table: `user_profile` 用户个人信息表
 CREATE TABLE IF NOT EXISTS `user_profile` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'PK',
   `user_id` INT(10) UNSIGNED NOT NULL COMMENT 'FK:user id',
@@ -31,8 +47,9 @@ CREATE TABLE IF NOT EXISTS `user_profile` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   KEY `deleted_at` (`deleted_at`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '用户详情表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '用户个人信息表';
 
+-- Table: `ad_keywords` 关键字词汇表
 CREATE TABLE IF NOT EXISTS `ad_keywords` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'PK',
   `type` TINYINT(4) NOT NULL DEFAULT 0 COMMENT '类型[1:,2:]',
@@ -44,10 +61,11 @@ CREATE TABLE IF NOT EXISTS `ad_keywords` (
   KEY `deleted_at` (`deleted_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '关键字词汇表';
 
+-- Table: `article` 文章表
 CREATE TABLE IF NOT EXISTS `article` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'PK',
-  `delete_id` INT(10) UNSIGNED DEFAULT NULL COMMENT '删除人(FK:admin user id)',
   `created_id` INT(10) UNSIGNED NOT NULL COMMENT '创建者(FK:user id)',
+  `delete_id` INT(10) UNSIGNED DEFAULT NULL COMMENT '删除人(FK:admin user id)',
   `cid` INT(10) UNSIGNED NOT NULL COMMENT '所属类型id[1:日本,2:韩国3:欧美]',
   `title` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '标题',
   `subtitle` VARCHAR(255) DEFAULT '' COMMENT '短标题',

@@ -52,3 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['admin/index'] = 'admin/admin/index'; // 管理员列表
+$route['admin/index/(:num)'] = 'admin/admin/index/(:num)'; // 管理员列表
+$route['admin/add'] = 'admin/admin/add'; // 添加管理员
+$route['admin/edit'] = 'admin/admin/edit'; // 编辑管理员
+$route['admin/edit/(:num)'] = 'admin/admin/edit/$1'; // 编辑管理员
