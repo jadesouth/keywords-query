@@ -170,11 +170,11 @@ class Admin_Controller extends MY_Controller
         }
 
         // 将分配给_viewVar的视图数据和传入的视图数据合并,如果有相同键名则覆盖_viewVar的键值
-        $var = array_merge($this->_viewVar, $var);
+        $var = array_merge($this->_headerViewVar, $this->_viewVar, $var);
         // 加载视图并分配视图变量
-        $this->load->view('admin/public/header', $this->_headerViewVar);
+        $this->load->view('admin/public/header', $var);
         $this->load->view("admin/left_nav/{$this->_className}.php");
-        $this->load->view('admin/' . $view, $var);
+        $this->load->view('admin/' . $view);
         $this->load->view('admin/public/footer');
     }
 }

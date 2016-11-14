@@ -29,8 +29,8 @@ class User extends Admin_Controller
 
         // view data
         $this->_headerViewVar['method_name'] = __FUNCTION__;
-        $this->_headerViewVar['user_type'] = $user_type;
         $this->_viewVar['table_header'] = ['#', '登录名', '性别', '手机号码', '真实姓名', 'E-mail', '身份证', 'QQ', '注册时间', '注册IP', '状态', '操作'];
+        $this->_viewVar['user_type'] = $user_type;
 
         // model
         $this->load->model('user_model');
