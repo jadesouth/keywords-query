@@ -122,7 +122,6 @@ class Admin_Controller extends MY_Controller
         // model
         $model = $this->_modelName;
         if('post' == $this->input->method()) {
-            echo 1;
             $this->load->helper('http');
             $this->load->library('form_validation');
             if(false === $this->form_validation->run()) {
@@ -131,7 +130,6 @@ class Admin_Controller extends MY_Controller
                 $id = (int)$_POST['id'];
                 unset($_POST['id']);
                 $model_name = $this->_className . '_model';
-                echo 2;
                 $affected_rows = $this->$model_name
                     ->setUpdateData($_POST)
                     ->edit($id);
