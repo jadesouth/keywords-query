@@ -18,7 +18,7 @@ if ( ! function_exists('generate_home_password')) {
      * @author wangnan <wangnanphp@163.com>
      * @date 2016-11-13 20:28:26
      */
-    function generate_home_password(string $password, string $salt)
+    function generate_home_password(string $password, string $salt): string
     {
         if(empty($password) || empty($salt)) {
             return false;
@@ -39,7 +39,7 @@ if ( ! function_exists('generate_admin_password')) {
      * @author wangnan <wangnanphp@163.com>
      * @date 2016-08-16 20:08:51
      */
-    function generate_admin_password(string $password, string $salt)
+    function generate_admin_password(string $password, string $salt): string
     {
         if(empty($password) || empty($salt)) {
             return false;

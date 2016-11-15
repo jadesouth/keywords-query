@@ -53,6 +53,9 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['admin'] = 'admin/admin/index'; // 后台主页
+$route['admin/login'] = 'admin/manager/login'; // 后台登录
+$route['admin/logout'] = 'admin/manager/logout'; // 后台登出
 $route['admin/index'] = 'admin/admin/index'; // 管理员列表
 $route['admin/index/(:num)'] = 'admin/admin/index/(:num)'; // 管理员列表
 $route['admin/add'] = 'admin/admin/add'; // 添加管理员

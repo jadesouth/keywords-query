@@ -12,6 +12,10 @@ $config = [
     'error_prefix' => '<p class="text-danger">',
     'error_suffix' => '</p>',
     // 管理管理员相关
+    'admin/manager/login' => [ // 管理员登陆
+        ['field' => 'login_name', 'label' => '用户名', 'rules' => 'trim|required|min_length[4]|max_length[18]'],
+        ['field' => 'password', 'label' => '密码', 'rules' => 'trim|required|min_length[6]|max_length[18]'],
+    ],
     'admin/admin/add' => [ // 添加管理员
         ['field' => 'login_name', 'label' => '登录账号', 'rules' => 'trim|required|min_length[4]|max_length[18]|is_unique[admin.login_name]'],
         ['field' => 'password', 'label' => '登录密码', 'rules' => 'trim|required|min_length[6]|max_length[18]'],
