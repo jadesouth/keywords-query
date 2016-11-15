@@ -66,7 +66,8 @@ class User extends Admin_Controller
     }
 
     /**
-     * ajax_disable 禁用账号
+     * ajax_disable
+     * 禁用账号
      *
      * @author haokaiyang
      * @date   2016-11-12 23:49:39
@@ -81,7 +82,7 @@ class User extends Admin_Controller
         }
 
         $this->load->model('user_model');
-        if (true == $this->user_model->modify(['status' => 1])) {
+        if (true == $this->user_model->modify($user_id, ['status' => 1])) {
             http_ajax_response(0, '关闭权限成功');
         } else {
             http_ajax_response(2, '关闭权限成功');
@@ -89,7 +90,8 @@ class User extends Admin_Controller
     }
 
     /**
-     * ajax_enable 启用账号
+     * ajax_enable
+     * 启用账号
      *
      * @author haokaiyang
      * @date   2016-11-12 23:49:58
@@ -104,10 +106,39 @@ class User extends Admin_Controller
         }
 
         $this->load->model('user_model');
-        if (true == $this->user_model->modify(['status' => 0])) {
+        if (true == $this->user_model->modify($user_id, ['status' => 0])) {
             http_ajax_response(0, '开通权限成功');
         } else {
             http_ajax_response(2, '开通权限失败');
         }
+    }
+
+    /**
+     * detail
+     * 用户详情
+     *
+     * @author haokaiyang
+     * @date 2016-11-15 23:05:17
+     */
+    public function detail(){
+        $this->load->helper('http');
+        $user_id = (int)$this->input->post('user_id', 0);
+        if(0 >= $user_id) {
+            http_ajax_response(1, '非法请求');
+            return;
+        }
+
+        // 获取用户信息
+        $this->load->model('user_model');
+        $user_info= $this->user_model->get_user_info($user_id);
+        if(empty($user_info)) {
+            http_ajax_response(2, '获取信息失败');
+            return;
+        }
+
+        // 整理数据
+        $user_info['sex'] = [1=>'男',2=>'女'][$user_info['sex']];
+        $user_info['status'] = [0=>'有权限',1=>'无权限'][$user_info['status']];
+        http_ajax_response(0, '', $user_info);
     }
 }

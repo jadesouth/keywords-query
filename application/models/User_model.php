@@ -45,4 +45,25 @@ class User_model extends MY_Model
                         ->get()
                         ->result_array();
     }
+
+    /**
+     * get_user_info
+     * 获取用户信息
+     *
+     * @param int $user_id
+     *
+     * @author haokaiyang
+     * @date   2016-11-15 23:27:47
+     */
+    public function get_user_info(int $user_id)
+    {
+        $this->load->database();
+        $select_field = 'user.id,user.login_name,user_profile.sex,user_profile.phone,user_profile.real_name,user_profile.email,user_profile.idcard,user_profile.qq,user_profile.reg_time,user_profile.reg_ip,user_profile.last_login_time,user_profile.last_login_ip,user.status';
+        return $this->db->select($select_field)
+                        ->from('user')
+                        ->join('user_profile', 'user_profile.user_id=user.id')
+                        ->where('user.deleted_at', '0000-00-00 00:00:00')
+                        ->get()
+                        ->row_array();
+    }
 }
