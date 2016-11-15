@@ -58,6 +58,18 @@ class MY_Model extends CI_Model
      */
     protected $_table;
     /**
+     * @var array 左关联查询相关表和条件
+     *            ['right_table_name' => 'join_condition']
+     *            eg: ['user_profile' => 'user.id = user_profile.id']
+     */
+    protected $_leftJoin = [];
+    /**
+     * @var array 右关联查询相关表和条件
+     *            ['left_table_name' => 'join_condition']
+     *            eg: ['user' => 'user_profile.id = user.id']
+     */
+    protected $_rightJoin = [];
+    /**
      * @var string 查询数据库的字段
      */
     protected $_selectFields = 'id';
@@ -137,6 +149,128 @@ class MY_Model extends CI_Model
 
         return $this->db->from($this->_table)
             ->count_all_results();
+    }
+
+    /**
+     * leftGet 左关联查询单条数据
+     *
+     * @param bool $clean_up 是否清理查询条件,默认清理
+     * @return array|bool
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date 2016-11-15 15:29:29
+     */
+    public function leftGet(bool $clean_up = true)
+    {
+        reset($this->_leftJoin);
+        if(empty($table = key($this->_leftJoin)) || $join_cond = current($this->_leftJoin)) {
+            return false;
+        }
+
+        $this->conditions($clean_up);
+        $this->db->join($table, $join_cond, 'left');
+        $select_fields = $this->_selectFields;
+        if(true === $clean_up) {
+            $this->_selectFields = 'id';
+            $this->_leftJoin = [];
+        }
+
+        return $this->db->select($select_fields)
+            ->from($this->_table)
+            ->limit(1)
+            ->get()
+            ->row_array();
+    }
+
+    /**
+     * rightGet 右关联查询单条数据
+     *
+     * @param bool $clean_up 是否清理查询条件,默认清理
+     * @return array|bool
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date 2016-11-15 15:31:03
+     */
+    public function rightGet(bool $clean_up = true)
+    {
+        reset($this->_rightJoin);
+        if(empty($table = key($this->_rightJoin)) || $join_cond = current($this->_rightJoin)) {
+            return false;
+        }
+
+        $this->conditions($clean_up);
+        $this->db->join($table, $join_cond, 'right');
+        $select_fields = $this->_selectFields;
+        if(true === $clean_up) {
+            $this->_selectFields = 'id';
+            $this->_rightJoin = [];
+        }
+
+        return $this->db->select($select_fields)
+            ->from($this->_table)
+            ->limit(1)
+            ->get()
+            ->row_array();
+    }
+
+    /**
+     * leftRead 左关联查询
+     *
+     * @param bool $clean_up 是否清理查询条件,默认清理
+     * @return array|bool
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date 2016-11-15 14:50:00
+     */
+    public function leftRead(bool $clean_up = true)
+    {
+        reset($this->_leftJoin);
+        if(empty($table = key($this->_leftJoin)) || $join_cond = current($this->_leftJoin)) {
+            return false;
+        }
+
+        $this->conditions($clean_up);
+        $this->db->join($table, $join_cond, 'left');
+        $select_fields = $this->_selectFields;
+        if(true === $clean_up) {
+            $this->_selectFields = 'id';
+            $this->_leftJoin = [];
+        }
+
+        return $this->db->select($select_fields)
+            ->from($this->_table)
+            ->get()
+            ->result_array();
+    }
+
+    /**
+     * rightRead 右关联查询
+     *
+     * @param bool $clean_up 是否清理查询条件,默认清理
+     * @return array|bool
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date 2016-11-15 15:28:34
+     */
+    public function rightRead(bool $clean_up = true)
+    {
+        reset($this->_rightJoin);
+        if(empty($table = key($this->_rightJoin)) || $join_cond = current($this->_rightJoin)) {
+            return false;
+        }
+
+        $this->conditions($clean_up);
+        $this->db->join($table, $join_cond, 'right');
+        $select_fields = $this->_selectFields;
+        if(true === $clean_up) {
+            $this->_selectFields = 'id';
+            $this->_rightJoin = [];
+        }
+
+        return $this->db->select($select_fields)
+            ->from($this->_table)
+            ->get()
+            ->result_array();
     }
 
     /**
