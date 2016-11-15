@@ -8,12 +8,17 @@
  * @property CI_Form_validation    $form_validation
  * @property CI_Input              $input
  * @property CI_Pagination         $pagination
+ * @property CI_Session            $session
  *
  * @author wangnan <wangnanphp@163.com>
  * @date   2016-11-11 00:42:03
  */
 class MY_Controller extends CI_Controller
 {
+    /**
+     * @var array 登录用户信息
+     */
+    protected $_login_user = [];
     /**
      * @var string 当前初始化的类名称
      */

@@ -446,6 +446,25 @@ class MY_Model extends CI_Model
     }
 
     /**
+     * setAndCond 设置查询的AND条件
+     *
+     * @param array $condition AND条件数组
+     * @return $this|bool
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date 2016-11-15 16:01:25
+     */
+    public function setAndCond(array $condition)
+    {
+        if(empty($condition) || ! is_array($condition)) {
+            return false;
+        }
+        $this->_conditions['AND'] = $condition;
+
+        return $this;
+    }
+
+    /**
      * conditions 设置查询条件
      *
      * @param bool $clean_up 是否清理查询条件,默认清理
