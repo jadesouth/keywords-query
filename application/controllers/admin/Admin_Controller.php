@@ -28,6 +28,13 @@ class Admin_Controller extends MY_Controller
     {
         parent::__construct();
 
+        // 检测登陆
+        if(empty($this->session->admin_login_user)) {
+            redirect('admin/login');
+        }
+        // 赋值登陆信息
+        $this->_login_user = $this->session->admin_login_user;
+
         // 加载后台控制器操作的主model
         $this->_modelName = $this->_className . '_model';
         $this->load->model($this->_modelName);
