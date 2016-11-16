@@ -17,4 +17,12 @@ $config = [
         'table_header' => ['#', '登录账号', '添加时间', '状态<br>0:禁用,1:正常', '操作'],
         'index_field' => 'id,login_name,created_at,status',
     ],
+    'article' => [
+        'name' => '文章管理',
+        'index' => '文章列表',
+        'add' => '添加文章',
+        'edit' => '修改文章',
+        'table_header' => ['#', '文章标题', '所属类型', '短标题', '状态<br>0:显示,1:隐藏', '操作'],
+        'index_field' => 'id,title,cid,subtitle,status',
+    ],
 ];
