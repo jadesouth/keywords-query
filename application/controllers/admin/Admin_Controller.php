@@ -9,9 +9,9 @@
 class Admin_Controller extends MY_Controller
 {
     /**
-     * @var string 当前Controller对应的主要Model名称
+     * @var MY_Model 当前Controller对应的主Model名称
      */
-    protected $_modelName = 'MY_Model';
+    protected $_model = 'MY_Model';
     /**
      * @var array 后台相关配置文件
      */
@@ -33,11 +33,11 @@ class Admin_Controller extends MY_Controller
             redirect('admin/login');
         }
         // 赋值登陆信息
-        $this->_login_user = $this->session->admin_login_user;
+        $this->_loginUser = $this->session->admin_login_user;
 
         // 加载后台控制器操作的主model
-        $this->_modelName = $this->_className . '_model';
-        $this->load->model($this->_modelName);
+        $this->_model = $this->_className . '_model';
+        $this->load->model($this->_model);
         // 加载后台相关的配置文件
         $this->config->load('admin', true);
         $this->_adminConfig = $this->config->item('admin');
@@ -64,7 +64,7 @@ class Admin_Controller extends MY_Controller
         $this->_viewVar['table_header'] = $this->_adminConfig[$this->_className]['table_header'];
 
         // model
-        $model = $this->_modelName;
+        $model = $this->_model;
 
         // 获取记录总条数
         $count = $this->$model->count();
@@ -99,7 +99,7 @@ class Admin_Controller extends MY_Controller
                 http_ajax_response(1, $this->form_validation->error_string());
             } else {
                 // model
-                $model = $this->_modelName;
+                $model = $this->_model;
                 $insert_id = $this->$model->add($_POST);
                 if (false !== $insert_id) {
                     http_ajax_response(0, $this->_adminConfig[$this->_className]['name'] . '添加成功!');
@@ -127,7 +127,7 @@ class Admin_Controller extends MY_Controller
     public function edit(int $id = 0)
     {
         // model
-        $model = $this->_modelName;
+        $model = $this->_model;
         if('post' == $this->input->method()) {
             $this->load->helper('http');
             $this->load->library('form_validation');
@@ -155,6 +155,31 @@ class Admin_Controller extends MY_Controller
                 ->find($id);
             $this->load_view();
         }
+    }
+
+    /**
+     * delete 后台通用根据ID删除数据
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date 2016-11-16 16:20:41
+     */
+    public function delete()
+    {
+        $id = (int)$this->input->post('id');
+        $this->load->helper('http');
+        if(0 >= $id) {
+            http_ajax_response(1, '删除操作不合法');
+            return;
+        }
+
+        $res = $this->_model->setAndCond(['id' => $id])
+            ->delete();
+        if(0 >= $res) {
+            http_ajax_response(2, '删除操作失败,请稍后再试');
+            return;
+        }
+
+        http_ajax_response(0, '删除操作成功');
     }
 
     /**
