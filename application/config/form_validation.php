@@ -25,4 +25,8 @@ $config = [
         ['field' => 'password', 'label' => '登录密码', 'rules' => 'trim|min_length[6]|max_length[18]'],
         ['field' => 'lock', 'label' => '是否禁用', 'rules' => 'trim|in_list[0,1]'],
     ],
+    'admin/keywords/add' => [ // 添加管理员
+        ['field' => 'type', 'label' => '关键字类型', 'rules' => 'trim|required|in_list[1,2]'],
+        ['field' => 'word', 'label' => '关键字', 'rules' => 'trim|required'],
+    ],
 ];

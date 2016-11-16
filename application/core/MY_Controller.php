@@ -18,7 +18,7 @@ class MY_Controller extends CI_Controller
     /**
      * @var array 登录用户信息
      */
-    protected $_login_user = [];
+    protected $_loginUser = [];
     /**
      * @var string 当前初始化的类名称
      */
