@@ -11,9 +11,9 @@
                 echo '<tr>';
                 foreach ($tr as $column_name => $value) { $td = 'status' == $column_name ? $status[$value] : $value; echo "<td>{$td}</td>";}
                 if('status' == $column_name && 0 == $value){ // 0.有权限 1.无权限
-                    echo '<td><a class="btn btn-danger btn-xs user-disable" data-user_id="'. $tr['id'] . '">关闭权限</a><a class="btn btn-default btn-xs user-info" data-user_id="'. $tr['id'] . '">查看详情</a></td></tr>';
+                    echo '<td><a class="btn btn-danger btn-xs user-disable" data-user_id="'. $tr['id'] . '">关闭权限</a>&nbsp;&nbsp;<a class="btn btn-default btn-xs user-info" data-user_id="'. $tr['id'] . '">查看详情</a></td></tr>';
                 }else{
-                    echo '<td><a class="btn btn-success btn-xs user-enable" data-user_id="'. $tr['id'] . '">开启权限</a><a class="btn btn-default btn-xs user-info" data-user_id="'. $tr['id'] . '">查看详情</a></td></tr>';
+                    echo '<td><a class="btn btn-success btn-xs user-enable" data-user_id="'. $tr['id'] . '">开启权限</a>&nbsp;&nbsp;<a class="btn btn-default btn-xs user-info" data-user_id="'. $tr['id'] . '">查看详情</a></td></tr>';
                 }
             }
         } else {
