@@ -20,6 +20,9 @@
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?=base_url()?>resources/assets/libs/bootstrap/js/bootstrap.min.js"></script>
+    <!-- layui -->
+    <link href="<?=base_url()?>resources/assets/libs/layui/css/layui.css" rel="stylesheet" type="text/css">
+    <script src="<?=base_url()?>resources/assets/libs/layui/layui.js" type="application/javascript"></script>
 </head>
 <body>
 <!-- Fixed navbar -->
