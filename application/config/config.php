@@ -368,9 +368,9 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'files';
-$config['sess_cookie_name'] = 'php_session';
+$config['sess_cookie_name'] = 'kw';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = '/data/wwwroot/homedoctoruserapi/application/cache/session';
+$config['sess_save_path'] = PATH_SESS_FILE;
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
