@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 CREATE TABLE IF NOT EXISTS `user_profile` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'PK',
   `user_id` INT(10) UNSIGNED NOT NULL COMMENT 'FK:user id',
-  `sex` TINYINT(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '性别 1:男,2:女',
+  `sex` TINYINT(4) UNSIGNED NOT NULL DEFAULT 0 COMMENT '性别[1:男,2:女]',
   `phone` CHAR(11) NOT NULL DEFAULT '' COMMENT '手机号码',
   `avatar` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '用户头像地址',
   `real_name` VARCHAR(30) NOT NULL DEFAULT '' COMMENT '真实姓名',
@@ -49,15 +49,18 @@ CREATE TABLE IF NOT EXISTS `user_profile` (
   KEY `deleted_at` (`deleted_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '用户个人信息表';
 
--- Table: `ad_keywords` 关键字词汇表
-CREATE TABLE IF NOT EXISTS `ad_keywords` (
+-- Table: `keywords` 关键字词汇表
+CREATE TABLE IF NOT EXISTS `keywords` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'PK',
-  `type` TINYINT(4) NOT NULL DEFAULT 0 COMMENT '类型[1:,2:]',
-  `word` VARCHAR(255) NOT NULL COMMENT '关键词',
+  `type` TINYINT(4) NOT NULL DEFAULT 0 COMMENT '类型[1:广告法,2:会员地址]',
+  `word` VARCHAR(600) NOT NULL DEFAULT '' COMMENT '关键词',
+  `status` TINYINT(4) NOT NULL DEFAULT 0 COMMENT  '状态:[0:正常]',
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `deleted_at` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '删除时间',
   PRIMARY KEY (`id`),
+  KEY `word` (`word`),
+  KEY `type` (`type`),
   KEY `deleted_at` (`deleted_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '关键字词汇表';
 
