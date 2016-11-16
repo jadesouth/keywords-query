@@ -84,6 +84,12 @@ defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
+/* COMMENT CONSTANT */
+defined('DS') OR define('DS', '/');  // DIRECTORY_SEPARATOR 目录分隔符简化写法
+/* PATH */
+defined('PATH_ROOT') OR define('PATH_ROOT', dirname(dirname(__DIR__)) . DS);       // 项目跟路径
+defined('PATH_APP') OR define('PATH_APP', PATH_ROOT . 'application' . DS);         // APP项目路径
+defined('PATH_SESS_FILE') OR define('PATH_SESS_FILE', PATH_APP . 'cache/session');  // session保存路径
 
 /* Admin CONSTANT */
 defined('ADMIN_PAGE_SIZE') OR define('ADMIN_PAGE_SIZE', 20); // 分页大小
