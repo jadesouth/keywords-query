@@ -29,7 +29,7 @@ class User extends Admin_Controller
 
         // view data
         $this->_headerViewVar['method_name'] = __FUNCTION__;
-        $this->_viewVar['table_header'] = ['#', '登录名', '性别', '手机号码', '真实姓名', 'E-mail', '身份证', 'QQ', '注册时间', '注册IP', '状态', '操作'];
+        $this->_viewVar['table_header'] = ['#', '登录名', '手机号码', '真实姓名', 'QQ', '注册时间', '状态', '操作'];
         $this->_viewVar['user_type'] = $user_type;
 
         // model
@@ -57,7 +57,7 @@ class User extends Admin_Controller
                 $this->_viewVar['data'] = $this->user_model->read_user_list($page);
             }
             foreach ($this->_viewVar['data'] as $key =>$user_info){
-                $this->_viewVar['data'][$key]['sex'] = array(1=>'男',2=>'女')[$user_info['sex']];
+                $this->_viewVar['data'][$key]['reg_time'] = date('Y-m-d H:i:s', $user_info['reg_time']);
             }
         }
 
@@ -139,6 +139,8 @@ class User extends Admin_Controller
         // 整理数据
         $user_info['sex'] = [1=>'男',2=>'女'][$user_info['sex']];
         $user_info['status'] = [0=>'有权限',1=>'无权限'][$user_info['status']];
+        $user_info['reg_time'] = date('Y-m-d H:i:s', $user_info['reg_time']);
+        $user_info['last_login_time'] = date('Y-m-d H:i:s', $user_info['last_login_time']);
         http_ajax_response(0, '', $user_info);
     }
 }

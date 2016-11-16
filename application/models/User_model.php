@@ -35,7 +35,7 @@ class User_model extends MY_Model
         $offset = 0 > $page ? 0 : ($page - 1) * $page_size;
 
         $order = empty($order) ? 'user.created_at DESC' : (string)$order;
-        $select_field = 'user.id,user.login_name,user_profile.sex,user_profile.phone,user_profile.real_name,user_profile.email,user_profile.idcard,user_profile.qq,user_profile.reg_time,user_profile.reg_ip,user.status';
+        $select_field = 'user.id,user.login_name,user_profile.phone,user_profile.real_name,user_profile.qq,user_profile.reg_time,user.status';
         return $this->db->select($select_field)
                         ->from('user')
                         ->join('user_profile', 'user_profile.user_id=user.id')
