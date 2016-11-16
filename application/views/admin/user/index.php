@@ -115,9 +115,11 @@
         </div>
     </div>
 </div>
-<script type="application/javascript" src="/resources/assets/libs/layer/layer.js"></script>
 <script type="application/javascript">
     $(function() {
+        layui.use('layer', function(){
+            var layer = layui.layer;
+        });
         // 关闭账号权限
         $(".user-disable").click(function() {
             var user_id = $(this).data("user_id");
