@@ -9,10 +9,6 @@
 class Admin_Controller extends MY_Controller
 {
     /**
-     * @var MY_Model 当前Controller对应的主Model名称
-     */
-    protected $_model = 'MY_Model';
-    /**
      * @var array 后台相关配置文件
      */
     protected $_adminConfig = [];
@@ -34,10 +30,6 @@ class Admin_Controller extends MY_Controller
         }
         // 赋值登陆信息
         $this->_loginUser = $this->session->admin_login_user;
-
-        // 加载后台控制器操作的主model
-        $this->_model = $this->_className . '_model';
-        $this->load->model($this->_model);
         // 加载后台相关的配置文件
         $this->config->load('admin', true);
         $this->_adminConfig = $this->config->item('admin');

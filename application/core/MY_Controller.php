@@ -16,6 +16,10 @@
 class MY_Controller extends CI_Controller
 {
     /**
+     * @var MY_Model 当前Controller对应的主Model名称
+     */
+    protected $_model = 'MY_Model';
+    /**
      * @var array 登录用户信息
      */
     protected $_loginUser = [];
@@ -40,5 +44,12 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct();
         $this->_className = strtolower(get_class($this));
+        // 如果类名对应的模型存在就加载,否则加载MY_Model
+        $model_path = PATH_MODEL . ucfirst($this->_className) . '_model.php';
+        if(file_exists($model_path)) {
+            $this->_model = $this->_className . '_model';
+        }
+        // 加载控制器操作的主model
+        $this->load->model($this->_model);
     }
 }
