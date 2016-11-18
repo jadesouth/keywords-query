@@ -40,6 +40,7 @@
 <!-- 弹出层部分end -->
 <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 <script src="<?=base_url()?>resources/assets/libs/modernizr-custom/modernizr-custom-v2.7.1.min.js"></script>
+<script src="<?=base_url()?>resources/assets/libs/layui/layui.js" type="application/javascript"></script>
 <script src="<?=base_url()?>resources/assets/js/home/style.js"></script>
 </body>
 </html>

@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>首页</title>
     <link href="<?=base_url()?>resources/assets/css/home/style.css" rel="stylesheet">
+    <!-- layui -->
+    <link href="<?=base_url()?>resources/assets/libs/layui/css/layui.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
