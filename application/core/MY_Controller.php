@@ -51,5 +51,8 @@ class MY_Controller extends CI_Controller
         }
         // 加载控制器操作的主model
         $this->load->model($this->_model);
+        $this->_model = $this->{$this->_model};
+        // 导航用的控制器名
+        $this->_headerViewVar['controller'] = $this->_className;
     }
 }

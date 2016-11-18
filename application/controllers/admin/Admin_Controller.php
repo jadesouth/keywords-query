@@ -33,8 +33,6 @@ class Admin_Controller extends MY_Controller
         // 加载后台相关的配置文件
         $this->config->load('admin', true);
         $this->_adminConfig = $this->config->item('admin');
-        // 后台导航用的控制器名
-        $this->_headerViewVar['controller'] = $this->_className;
     }
 
     /**

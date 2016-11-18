@@ -19,9 +19,14 @@ class Home_Controller extends MY_Controller
      */
     public function load_view(string $view = '', array $var = [])
     {
+        // 分配给视图方法名
+        if(empty($this->_headerViewVar['method_name'])) {
+            $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
+            $this->_headerViewVar['method_name'] = $backtrace[1]['function'];
+        }
         // 获取默认视图,默认取与调用此方法的方法同名的视图
         if(empty($view)) {
-            $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
+            empty($backtrace) && $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
             $view = $this->_className . '/' .$backtrace[1]['function'];
         }
 

@@ -29,4 +29,7 @@ $config = [
         ['field' => 'type', 'label' => '关键字类型', 'rules' => 'trim|required|in_list[1,2]'],
         ['field' => 'word', 'label' => '关键字', 'rules' => 'trim|required'],
     ],
+    'keywords/advertising' => [ // 广告法关键字查询
+        ['field' => 'contents', 'label' => '内容', 'rules' => 'trim|required'],
+    ],
 ];
