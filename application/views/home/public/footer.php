@@ -24,12 +24,28 @@
                 <form>
                     <dl class="clearfix">
                         <dt class="close"><span>关闭</span></dt>
-                        <dt class="phone"><p><i></i><input type="text" placeholder="请输入您的手机号" value="" /></p></dt>
-                        <dt class="img-code"><p><i></i><input type="text" placeholder="请输入左侧的图形" value="" /></p></dt>
-                        <dt class="phone-code"><p><i></i><input type="text" placeholder="请输入手机收到的验证码" value="" /></p></dt>
+                        <dt class="login_name"><p><input type="text" placeholder="请输入您的用户名" value="" /></p></dt>
+                        <dt class="password"><p><input type="text" placeholder="请输入密码" value="" /></p></dt>
                         <dd class="ck clearfix"><input type="checkbox" value="1" />记住我（如在公共区域，请不要点选此项）</dd>
                         <dd class="su clearfix"><input type="button" value="登&nbsp;&nbsp;录" /></dd>
-                        <dd>* 如果您并未注册，登录后系统将自动为您创建安好账号</dd>
+                    </dl>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="register" >
+    <div class="content">
+        <div class="m-width clearfix">
+            <div class="dengl clearfix">
+                <form>
+                    <dl class="clearfix">
+                        <dt class="close"><span>关闭</span></dt>
+                        <dt class="login_name"><p><input type="text" placeholder="请输入您的用户名" value="" /></p></dt>
+                        <dt class="password"><p><input type="text" placeholder="请输入密码" value="" /></p></dt>
+                        <dt class="con_password"><p><input type="text" placeholder="请重复输入密码" value="" /></p></dt>
+                        <dd class="ck clearfix"><input type="checkbox" value="1" />记住我（如在公共区域，请不要点选此项）</dd>
+                        <dd class="su clearfix"><input type="button" value="注&nbsp;&nbsp;册" /></dd>
                     </dl>
                 </form>
             </div>

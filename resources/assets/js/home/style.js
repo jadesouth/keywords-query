@@ -66,12 +66,18 @@ $(function(){
         $('.denglu').show(0);
         $('.content_mark').show(0);
     });
+    $('.register-btn').click(function(){
+        $('.register').show(0);
+        $('.content_mark').show(0);
+    });
     $('.content_mark').click(function(){
         $('.denglu').hide(0);
+        $('.register').hide(0);
         $('.content_mark').hide(0);
     });
     $('.close').click(function(){
         $('.denglu').hide(0);
+        $('.register').hide(0);
         $('.content_mark').hide(0);
     });
     //添加家人弹出层

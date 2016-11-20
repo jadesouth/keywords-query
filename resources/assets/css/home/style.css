@@ -56,8 +56,8 @@ a{color: #333;hide-focus: expression( this.hideFocus=true );outline: none;}
 .h-logo i {width:56px; height:56px; margin:0 22px 0 11px;}
 .h-logo i img{width:100%; height:100%;}
 .h-logo span{ font-size:16px; display:block; margin-top:5px;}
-.h-hot-menu { font-size:18px; height:30px; margin-top:16px;}
-.h-hot-menu a { float:left; height:30px; padding:0 8px; margin-right:30px;}
+.h-hot-menu { font-size:14px; height:20px; margin-top:16px;}
+.h-hot-menu a { float:left; height:20px; padding:0 5px; margin-right:20px;}
 .h-hot-menu a:hover {border-bottom:2px solid #3073ce; color:#3073ce;}
 .h-hot-menu a.menu-hover {border-bottom:2px solid #3073ce; color:#3073ce;}
 
@@ -66,7 +66,7 @@ a{color: #333;hide-focus: expression( this.hideFocus=true );outline: none;}
 .h-search i { float:left;width:17px; height:17px; background:url(../../images/style/ico.png) no-repeat left -92px; position:relative; left:16px; top:13px;}
 .h-search .tx { padding-left:24px; height:40px; line-height:40px; font-size:14px; width:160px;}
 .h-search .su { width:78px;height:40px; background:#73b52d; line-height:40px; font-size:16px; color:#fff; cursor:pointer; float:right;-webkit-appearance: none;}
-.login-btn,.login-info { width:120px;padding:0 10px; height:44px; line-height:44px; font-size:16px; color:#fff; background:#3073ce; text-align:center; -moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius:2px; cursor:pointer; overflow:hidden;}
+.login-btn,.login-info,.register-btn { width:80px;padding:0 10px; margin: 0 10px;height:40px; line-height:40px; font-size:14px; color:#fff; background:#3073ce; text-align:center; -moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius:2px; cursor:pointer; overflow:hidden;}
 .login-info a { color:#fff;}
 
 /* banner */
@@ -116,8 +116,8 @@ a{color: #333;hide-focus: expression( this.hideFocus=true );outline: none;}
 .flickerplate.animate-scroller-slide ul.flicks {position:auto}
 
 /* 登陆框 */
-.denglu {position: fixed;left: -100%;right:100%;top:0;bottom: 0;text-align: center;font-size: 0; z-index:9999; display:none;}
-.denglu:after {content:"";display: inline-block;vertical-align: middle;height: 100%;width: 0;}
+.denglu,.register {position: fixed;left: -100%;right:100%;top:0;bottom: 0;text-align: center;font-size: 0; z-index:9999; display:none;}
+.denglu:after,.register:after {content:"";display: inline-block;vertical-align: middle;height: 100%;width: 0;}
 .content{display: inline-block; *display: inline; *zoom:1;    vertical-align: middle;position: relative;right: -100%;}
 .content_mark{ width:100%; height:100%; position:fixed; left:0; top:0; z-index:555; background:#000; opacity:0.5;filter:alpha(opacity=50); display:none;}
 

@@ -12,8 +12,17 @@
 <body>
 <div class="header clearfix">
     <div class="m-width clearfix">
-        <div class="h-logo fl"><i class="fl"><a href=""><img src="/resources/assets/images/logo.png"/></a></i>安好专家</div>
-        <div class="h-hot-menu fl"><a href="" class="menu-hover">看专家</a><a href="">安好客户端</a><a href="">家庭医生</a><a href="">联系我们</a></div>
+        <div class="h-logo fl"><i class="fl"><a href=""><img src="/resources/assets/images/logo.png"/></a></i>西今科技</div>
+        <div class="h-hot-menu fl">
+            <a href="">首页</a>
+            <a href="">知识产权服务</a>
+            <a href="">价格管控</a>
+            <a href="">淘宝天猫顾问</a>
+            <a href="" class="menu-hover">广告法小助手</a>
+            <a href="">抽检小助手</a>
+            <a href="">关于我们</a>
+        </div>
+        <div class="fr register-btn">注册</div><!--<div class="fr login-info">欢迎您：<a href="">某某某某某某某某</a></div>-->
         <div class="fr login-btn">登陆</div><!--<div class="fr login-info">欢迎您：<a href="">某某某某某某某某</a></div>-->
     </div>
 </div>
