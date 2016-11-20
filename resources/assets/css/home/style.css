@@ -507,12 +507,12 @@ label.error { font-size:12px; color:#f00; display:block; padding-left:120px;}
 .m-help em{ color:#3073ce; font-size:16px;}
 
 /* 添加家人弹出 */
-.addhome { border:1px solid #e3efff; background:#f3f8ff; width:830px; text-align:left;}
-.addhome-walk {position: fixed;left: -100%;right:100%;top:0;bottom: 0;text-align: center; z-index:9999; display:none;}
+/*.addhome { border:1px solid #e3efff; background:#f3f8ff; width:870px; text-align:left;}*/
+/*.addhome-walk {position: fixed;left: -100%;right:100%;top:0;bottom: 0;text-align: center; z-index:9999; display:none;}*/
 .addhome-walk:after {content:"";display: inline-block;vertical-align: middle;height: 100%;width: 0;}
-.addhome-content{display: inline-block; *display: inline; *zoom:1;    vertical-align: middle;position: relative;right: -100%;}
+.addhome-content{display: inline-block; *display: inline; *zoom:1;    vertical-align: middle;/*position: relative;*/right: -100%;}
 .addhome-mark{ width:100%; height:100%; position:fixed; left:0; top:0; z-index:555; background:#000; opacity:0.5;filter:alpha(opacity=50); display:none;}
-.addhome .yuyue-info-2 { padding:40px 0 0 50px; width:470px;}
+.addhome .yuyue-info-2 { padding:40px 0 0 50px; width:870px;}
 .addhome .yuyue-info-2 dt { height:80px;}
 .addhome .yuyue-info-2 dt span{ display:block; font-size:18px; color:#3073ce; height:40px;}
 .addhome .yuyue-info-2 dd span { margin:5px 0 0 0;}

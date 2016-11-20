@@ -163,7 +163,7 @@ class MY_Model extends CI_Model
     public function leftGet(bool $clean_up = true)
     {
         reset($this->_leftJoin);
-        if(empty($table = key($this->_leftJoin)) || $join_cond = current($this->_leftJoin)) {
+        if(empty($table = key($this->_leftJoin)) || empty($join_cond = current($this->_leftJoin))) {
             return false;
         }
 
@@ -194,7 +194,7 @@ class MY_Model extends CI_Model
     public function rightGet(bool $clean_up = true)
     {
         reset($this->_rightJoin);
-        if(empty($table = key($this->_rightJoin)) || $join_cond = current($this->_rightJoin)) {
+        if(empty($table = key($this->_rightJoin)) || empty($join_cond = current($this->_rightJoin))) {
             return false;
         }
 
@@ -526,7 +526,7 @@ class MY_Model extends CI_Model
         }
         $logical = empty($conditions['AND']) ? 'AND' : 'OR';
         $this->parseConditions($this->_conditions, $logical);
-        $this->db->where('deleted_at', '0000-00-00 00:00:00');
+        $this->db->where($this->_table.'.deleted_at', '0000-00-00 00:00:00');
         // 清理查询条件
         true === $clean_up && $this->_conditions = [];
 
