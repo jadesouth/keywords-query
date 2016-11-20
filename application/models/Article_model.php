@@ -17,7 +17,7 @@ class Article_model extends MY_Model
     {
         //默认数据
         $article_info['created_id'] = 1;
-        $article_info['cid'] = 1;
+        $article_info['cid'] = 1;//当这个选自昂为1的时候，当前的操作是作为选项卡出现的
         $article_info['pic'] = 123;
         if(
             empty($article_info['title']) ||
