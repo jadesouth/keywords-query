@@ -22,8 +22,13 @@
             <a href="">抽检小助手</a>
             <a href="">关于我们</a>
         </div>
-        <div class="fr register-btn">注册</div><!--<div class="fr login-info">欢迎您：<a href="">某某某某某某某某</a></div>-->
-        <div class="fr login-btn">登陆</div><!--<div class="fr login-info">欢迎您：<a href="">某某某某某某某某</a></div>-->
+        <?php if(empty($_SESSION['home_login_user'])){?>
+            <div class="fr register-btn">注册</div>
+            <div class="fr login-btn">登陆</div>
+        <?php }else{ ?>
+            <div class="fr login-info">欢迎您：<a href=""><?= !empty($_SESSION['home_login_user']['real_name']) ? $_SESSION['home_login_user']['real_name'] : $_SESSION['home_login_user']['login_name'] ?></a>
+            </div>
+        <?php }?>
     </div>
 </div>
 <div class="m-width">

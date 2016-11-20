@@ -72,3 +72,46 @@ if(! function_exists('random_characters')) {
         return $generate_characters;
     }
 }
+
+if (! function_exists('get_ip')) {
+    /**
+     * 获取客户端ip地址
+     *
+     * @return string
+     * @author haokaiyang
+     * @date   2016-11-20 15:47:30
+     */
+    function get_ip()
+    {
+        $ip = '';
+        if (! empty($_SERVER['HTTP_CLIENT_IP'])) {
+            return is_ip($_SERVER['HTTP_CLIENT_IP']) ? $_SERVER['HTTP_CLIENT_IP'] : $ip;
+        } elseif (! empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            return is_ip($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : $ip;
+        } else {
+            return is_ip($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : $ip;
+        }
+    }
+}
+
+if (! function_exists('is_ip')) {
+    /**
+     * 判断字符串是否是ip地址
+     *
+     * @param string $str
+     *
+     * @return bool|int
+     * @author haokaiyang
+     * @date $DATETIME
+     */
+    function is_ip(string $str)
+    {
+        $ip = explode('.', $str);
+        for ($i = 0;$i < count($ip);$i++) {
+            if ($ip[$i] > 255) {
+                return false;
+            }
+        }
+        return preg_match('/^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$/', $str);
+    }
+}

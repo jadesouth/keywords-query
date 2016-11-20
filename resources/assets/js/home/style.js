@@ -94,8 +94,47 @@ $(function(){
         $('.addhome-mark').hide(0);
     });
 });
-//banner
-//$(document).ready(function(){
-//    $('.flicker-example').flicker();
-//});
-//表单美化
+// 加载layer
+layui.use('layer', function () {
+    var layer = layui.layer;
+});
+// 注册账号
+$(".btn-register").click(function () {
+    var login_name = $('.register .login_name input').val();
+    var password = $('.register .password input').val();
+    var con_password = $('.register .con_password input').val();
+    // todo 增加正则验证
+    if (undefined == login_name || '' == login_name || false == login_name) {
+        layer.msg('请输入用户名');
+        return false;
+    }
+    if (undefined == password || '' == password || false == password) {
+        layer.msg('请输入登录密码');
+        return false;
+    }
+    if (undefined == con_password || '' == con_password || false == con_password) {
+        layer.msg('请输入确定密码');
+        return false;
+    }
+    if (password != con_password) {
+        layer.msg('您输入的密码不一致,请重新输入');
+        return false;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/user/ajax_register",
+        data: {'login_name': login_name, 'password': password, 'con_password': con_password},
+        dataType: "json",
+        success: function (response) {
+            if (0 == response.status) {
+                layer.alert(response.msg, {icon: 6}, function () {
+                    window.location.href = "/";
+                });
+            } else if (1 == response.status) {
+                layer.alert(response.msg);
+                return false;
+            }
+        }
+    });
+});

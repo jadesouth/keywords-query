@@ -20,16 +20,14 @@
 <div class="denglu">
     <div class="content">
         <div class="m-width clearfix">
-            <div class="dengl clearfix">
-                <form>
-                    <dl class="clearfix">
-                        <dt class="close"><span>关闭</span></dt>
-                        <dt class="login_name"><p><input type="text" placeholder="请输入您的用户名" value="" /></p></dt>
-                        <dt class="password"><p><input type="text" placeholder="请输入密码" value="" /></p></dt>
-                        <dd class="ck clearfix"><input type="checkbox" value="1" />记住我（如在公共区域，请不要点选此项）</dd>
-                        <dd class="su clearfix"><input type="button" value="登&nbsp;&nbsp;录" /></dd>
-                    </dl>
-                </form>
+            <div class="user_container clearfix">
+                <dl class="clearfix">
+                    <dt class="close"><span>关闭</span></dt>
+                    <dt class="login_name"><p><input type="text" placeholder="请输入您的用户名" value="" /></p></dt>
+                    <dt class="password"><p><input type="password" placeholder="请输入密码" value="" /></p></dt>
+                    <dd class="ck clearfix"><input type="checkbox" value="1" />记住我（如在公共区域，请不要点选此项）</dd>
+                    <dd class="su clearfix btn-login"><input type="button" value="登&nbsp;&nbsp;录" /></dd>
+                </dl>
             </div>
         </div>
     </div>
@@ -37,17 +35,14 @@
 <div class="register" >
     <div class="content">
         <div class="m-width clearfix">
-            <div class="dengl clearfix">
-                <form>
-                    <dl class="clearfix">
-                        <dt class="close"><span>关闭</span></dt>
-                        <dt class="login_name"><p><input type="text" placeholder="请输入您的用户名" value="" /></p></dt>
-                        <dt class="password"><p><input type="text" placeholder="请输入密码" value="" /></p></dt>
-                        <dt class="con_password"><p><input type="text" placeholder="请重复输入密码" value="" /></p></dt>
-                        <dd class="ck clearfix"><input type="checkbox" value="1" />记住我（如在公共区域，请不要点选此项）</dd>
-                        <dd class="su clearfix"><input type="button" value="注&nbsp;&nbsp;册" /></dd>
-                    </dl>
-                </form>
+            <div class="user_container clearfix">
+                <dl class="clearfix">
+                    <dt class="close"><span>关闭</span></dt>
+                    <dt class="login_name"><p><input type="text" placeholder="请输入您的用户名" value="" /></p></dt>
+                    <dt class="password"><p><input type="password" placeholder="请输入密码" value="" /></p></dt>
+                    <dt class="con_password"><p><input type="password" placeholder="请重复输入密码" value="" /></p></dt>
+                    <dd class="su clearfix btn-register"><input type="button" value="注&nbsp;&nbsp;册" /></dd>
+                </dl>
             </div>
         </div>
     </div>

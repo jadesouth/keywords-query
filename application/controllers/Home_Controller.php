@@ -9,6 +9,22 @@
 class Home_Controller extends MY_Controller
 {
     /**
+     * Home_Controller constructor.
+     *
+     * @author haokaiyang
+     * @date 2016-11-20 16:16:49
+     */
+    public function __construct()
+    {
+        parent::__construct();
+
+        // 检测登陆
+        if(!empty($this->session->home_login_user)) {
+            $this->_loginUser = $this->session->home_login_user;
+        }
+    }
+
+    /**
      * load_view 加载模板
      *
      * @param string $view 模板名称,默认取与调用此方法的方法同名的视图
@@ -29,7 +45,6 @@ class Home_Controller extends MY_Controller
             empty($backtrace) && $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
             $view = $this->_className . '/' .$backtrace[1]['function'];
         }
-
         // 将分配给_viewVar的视图数据和传入的视图数据合并,如果有相同键名则覆盖_viewVar的键值
         $var = array_merge($this->_headerViewVar, $this->_viewVar, $var);
         // 加载视图并分配视图变量

@@ -13,6 +13,40 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class User_model extends MY_Model
 {
     /**
+     * add 添加用户,同时添加user和user_profile表数据
+     *
+     * @param array $user_info 用户信息
+     *
+     * @return bool
+     *
+     * @author haokaiyang
+     * @date   2016-11-20 15:27:44
+     */
+    public function add(array $user_info)
+    {
+        if (empty($user_info['login_name']) || empty($user_info['password'])) {
+            return false;
+        }
+        $this->load->helper(['tools', 'security']);
+        $this->db->trans_start();
+        $this->_insertData['login_name'] = $user_info['login_name'];
+        $this->_insertData['salt'] = random_characters();
+        $this->_insertData['password'] = generate_admin_password($user_info['password'], $this->_insertData['salt']);
+        $this->_insertData['status'] = 1; // 状态[0:有权限,1:无权限]
+        $user_id = $this->create([], true);
+        $this->_table = 'user_profile';
+        $this->_insertData['user_id'] = $user_id;
+        $this->_insertData['reg_time'] = time();
+        $this->_insertData['reg_ip'] = get_ip();
+        $this->create();
+        $this->db->trans_complete();
+        if ($this->db->trans_status() === false) {
+            return false;
+        }
+        return $user_id;
+    }
+
+    /**
      * read_user_list 读取用户列表
      *
      * @param int $page

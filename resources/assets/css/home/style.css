@@ -66,7 +66,8 @@ a{color: #333;hide-focus: expression( this.hideFocus=true );outline: none;}
 .h-search i { float:left;width:17px; height:17px; background:url(../../images/style/ico.png) no-repeat left -92px; position:relative; left:16px; top:13px;}
 .h-search .tx { padding-left:24px; height:40px; line-height:40px; font-size:14px; width:160px;}
 .h-search .su { width:78px;height:40px; background:#73b52d; line-height:40px; font-size:16px; color:#fff; cursor:pointer; float:right;-webkit-appearance: none;}
-.login-btn,.login-info,.register-btn { width:80px;padding:0 10px; margin: 0 10px;height:40px; line-height:40px; font-size:14px; color:#fff; background:#3073ce; text-align:center; -moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius:2px; cursor:pointer; overflow:hidden;}
+.login-btn,.register-btn { width:80px;padding:0 10px; margin: 0 10px;height:40px; line-height:40px; font-size:14px; color:#fff; background:#3073ce; text-align:center; -moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius:2px; cursor:pointer; overflow:hidden;}
+.login-info { width:200px;padding:0 10px; margin: 0 10px;height:40px; line-height:40px; font-size:14px; color:#fff; background:#3073ce; text-align:center; -moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius:2px; cursor:pointer; overflow:hidden;}
 .login-info a { color:#fff;}
 
 /* banner */
@@ -121,26 +122,26 @@ a{color: #333;hide-focus: expression( this.hideFocus=true );outline: none;}
 .content{display: inline-block; *display: inline; *zoom:1;    vertical-align: middle;position: relative;right: -100%;}
 .content_mark{ width:100%; height:100%; position:fixed; left:0; top:0; z-index:555; background:#000; opacity:0.5;filter:alpha(opacity=50); display:none;}
 
-.dengl { border:1px solid #e3efff; background: url(../../images/style/bg-login.png) no-repeat 95px 135px #f3f8ff; height:560px; text-align:left;}
-.dengl dl{ width:573px; float:right;}
-.dengl dl dt{ height:83px;}
+.user_container { border:1px solid #e3efff; background: url(../../images/style/bg-login.png) no-repeat 95px 135px #f3f8ff; height:560px; text-align:left;}
+.user_container dl{ width:573px; float:right;}
+.user_container dl dt{ height:83px;}
 .close span{ float:right; margin:15px 15px 0 0; width:33px; height:33px; background:url(../../images/style/ico.png) no-repeat left -115px; overflow:hidden; text-indent:-20em; cursor:pointer;}
-.dengl dl dt p{ width:428px; height:58px; border:1px solid #dee6f0; background:#fff;}
-.dengl dl dt i{ float:left; margin:18px 0 0 25px;width:20px;height:24px; background: url(../../images/style/ico.png) no-repeat; background-position:left top; margin-right:50px;}
+.user_container dl dt p{ width:428px; height:58px; border:1px solid #dee6f0; background:#fff;}
+.user_container dl dt i{ float:left; margin:18px 0 0 25px;width:20px;height:24px; background: url(../../images/style/ico.png) no-repeat; background-position:left top; margin-right:50px;}
 
-.dengl dl dt input{ height:30px; line-height:30px; font-size:16px; color:#a1b5d0; margin-top:12px; width:180px;}
-.dengl dl dt.img-code input { width:150px;}
-.dengl dl dt.img-code img { float:right;}
-.dengl dl dt.phone-code .su { width:131px; height:56px; line-height:56px; float:right; margin:1px; cursor:pointer; font-size:14px; color:#303030;}
+.user_container dl dt input{ height:30px; line-height:30px; font-size:16px; color:#a1b5d0; margin-top:12px; width:180px;}
+.user_container dl dt.img-code input { width:150px;}
+.user_container dl dt.img-code img { float:right;}
+.user_container dl dt.phone-code .su { width:131px; height:56px; line-height:56px; float:right; margin:1px; cursor:pointer; font-size:14px; color:#303030;}
 
-.dengl dl dt.phone i{background-position:left -154px;}
-.dengl dl dt.img-code i{background-position:left -184px;}
-.dengl dl dt.phone-code i{background-position:left -213px;}
+.user_container dl dt.phone i{background-position:left -154px;}
+.user_container dl dt.img-code i{background-position:left -184px;}
+.user_container dl dt.phone-code i{background-position:left -213px;}
 
-.dengl dl dd { height:50px; line-height:50px; color:#666; font-size:14px;}
-.dengl dl .ck input { width:20px; height:20px; float:left; margin:15px 15px 0 0 ;}
-.dengl dl .su input { width:432px; height:60px; float:left; margin:15px 15px 0 0 ; color:#fff; font-size:20px; background:#3073ce; cursor:pointer;-webkit-appearance: none;}
-.dengl dl .su { height:85px;}
+.user_container dl dd { height:50px; line-height:50px; color:#666; font-size:14px;}
+.user_container dl .ck input { width:20px; height:20px; float:left; margin:15px 15px 0 0 ;}
+.user_container dl .su input { width:432px; height:60px; float:left; margin:15px 15px 0 0 ; color:#fff; font-size:20px; background:#3073ce; cursor:pointer;-webkit-appearance: none;}
+.user_container dl .su { height:85px;}
 
 /* 首页 */
 .m1 {}

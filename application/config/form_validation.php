@@ -32,4 +32,9 @@ $config = [
     'keywords/advertising' => [ // 广告法关键字查询
         ['field' => 'contents', 'label' => '内容', 'rules' => 'trim|required'],
     ],
+    'user/ajax_register' => [ // 用户注册
+        ['field' => 'login_name', 'laber' => '登录名', 'rules'=> 'trim|required|is_unique[user.login_name]'],
+        ['field' => 'password', 'laber' => '密码', 'rules'=> 'trim|required'],
+        ['field' => 'con_password', 'laber' => '确认密码', 'rules'=> 'trim|required|matches[password]'],
+    ],
 ];
