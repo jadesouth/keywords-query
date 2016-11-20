@@ -95,8 +95,9 @@ $(function(){
     });
 });
 // 加载layer
-layui.use('layer', function () {
+layui.use(['layer', 'form', 'upload'], function () {
     var layer = layui.layer;
+    var form = layui.form();
 });
 // 注册账号
 $(".btn-register").click(function () {
@@ -125,6 +126,38 @@ $(".btn-register").click(function () {
         type: "POST",
         url: "/user/ajax_register",
         data: {'login_name': login_name, 'password': password, 'con_password': con_password},
+        dataType: "json",
+        success: function (response) {
+            if (0 == response.status) {
+                layer.alert(response.msg, {icon: 6}, function () {
+                    window.location.href = "/";
+                });
+            } else if (1 == response.status) {
+                layer.alert(response.msg);
+                return false;
+            }
+        }
+    });
+});
+
+// 登录账号
+$(".btn-login").click(function () {
+    var login_name = $('.denglu .login_name input').val();
+    var password = $('.denglu .password input').val();
+    // todo 增加正则验证
+    if (undefined == login_name || '' == login_name || false == login_name) {
+        layer.msg('请输入用户名');
+        return false;
+    }
+    if (undefined == password || '' == password || false == password) {
+        layer.msg('请输入登录密码');
+        return false;
+    }
+
+    $.ajax({
+        type: "POST",
+        url: "/user/ajax_login",
+        data: {'login_name': login_name, 'password': password},
         dataType: "json",
         success: function (response) {
             if (0 == response.status) {

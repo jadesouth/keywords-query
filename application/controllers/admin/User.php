@@ -120,25 +120,26 @@ class User extends Admin_Controller
      * @author haokaiyang
      * @date 2016-11-15 23:05:17
      */
-    public function detail(){
+    public function detail()
+    {
         $this->load->helper('http');
         $user_id = (int)$this->input->post('user_id', 0);
-        if(0 >= $user_id) {
+        if (0 >= $user_id) {
             http_ajax_response(1, '非法请求');
             return;
         }
 
         // 获取用户信息
         $this->load->model('user_model');
-        $user_info= $this->user_model->get_user_info($user_id);
-        if(empty($user_info)) {
+        $user_info = $this->user_model->get_user_info(['user.id' => $user_id], 'user.id,user.login_name,user_profile.sex,user_profile.phone,user_profile.real_name,user_profile.email,user_profile.idcard,user_profile.qq,user_profile.reg_time,user_profile.reg_ip,user_profile.last_login_time,user_profile.last_login_ip,user.status');
+        if (empty($user_info)) {
             http_ajax_response(2, '获取信息失败');
             return;
         }
 
         // 整理数据
-        $user_info['sex'] = [1=>'男',2=>'女'][$user_info['sex']];
-        $user_info['status'] = [0=>'有权限',1=>'无权限'][$user_info['status']];
+        $user_info['sex'] = [0 => '未知', 1 => '男', 2 => '女'][$user_info['sex']];
+        $user_info['status'] = [0 => '有权限', 1 => '无权限'][$user_info['status']];
         $user_info['reg_time'] = date('Y-m-d H:i:s', $user_info['reg_time']);
         $user_info['last_login_time'] = date('Y-m-d H:i:s', $user_info['last_login_time']);
         http_ajax_response(0, '', $user_info);

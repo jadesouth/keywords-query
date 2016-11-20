@@ -37,4 +37,8 @@ $config = [
         ['field' => 'password', 'laber' => '密码', 'rules'=> 'trim|required'],
         ['field' => 'con_password', 'laber' => '确认密码', 'rules'=> 'trim|required|matches[password]'],
     ],
+    'user/ajax_login' => [ // 用户注册
+        ['field' => 'login_name', 'laber' => '登录名', 'rules'=> 'trim|required'],
+        ['field' => 'password', 'laber' => '密码', 'rules'=> 'trim|required'],
+    ],
 ];
