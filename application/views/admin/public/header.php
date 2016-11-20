@@ -40,7 +40,7 @@
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav main-nav-font">
                 <li<?='keywords' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/keywords/advertising')?>">关键字管理</a></li>
-                <li<?='article' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/article')?>">文章管理</a></li>
+                <li<?='article' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/article/business')?>">内容管理</a></li>
                 <li<?='user' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/user')?>">用户管理</a></li>
                 <li<?='admin' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/index')?>">管理员管理</a></li>
             </ul>
