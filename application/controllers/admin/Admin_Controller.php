@@ -53,11 +53,8 @@ class Admin_Controller extends MY_Controller
         $this->_headerViewVar['method_name'] = __FUNCTION__;
         $this->_viewVar['table_header'] = $this->_adminConfig[$this->_className]['table_header'];
 
-        // model
-        $model = $this->_model;
-
         // 获取记录总条数
-        $count = $this->$model->count();
+        $count = $this->_model->count();
         if(! empty($count)) {
             // Page configure
             $this->load->library('pagination');
@@ -66,7 +63,7 @@ class Admin_Controller extends MY_Controller
             $this->pagination->initialize($config);
             $this->_viewVar['page'] = $this->pagination->create_links();
             // get page data
-            $this->_viewVar['data'] = $this->$model
+            $this->_viewVar['data'] = $this->_model
                 ->setSelectFields($this->_adminConfig[$this->_className]['index_field'])
                 ->getPage($page, ADMIN_PAGE_SIZE);
         }
@@ -88,9 +85,7 @@ class Admin_Controller extends MY_Controller
             if (false === $this->form_validation->run()) {
                 http_ajax_response(1, $this->form_validation->error_string());
             } else {
-                // model
-                $model = $this->_model;
-                $insert_id = $this->$model->add($_POST);
+                $insert_id = $this->_model->add($_POST);
                 if (false !== $insert_id) {
                     http_ajax_response(0, $this->_adminConfig[$this->_className]['name'] . '添加成功!');
                 } else {
@@ -116,8 +111,6 @@ class Admin_Controller extends MY_Controller
      */
     public function edit(int $id = 0)
     {
-        // model
-        $model = $this->_model;
         if('post' == $this->input->method()) {
             $this->load->helper('http');
             $this->load->library('form_validation');
@@ -126,8 +119,7 @@ class Admin_Controller extends MY_Controller
             } else {
                 $id = (int)$_POST['id'];
                 unset($_POST['id']);
-                $model_name = $this->_className . '_model';
-                $affected_rows = $this->$model_name
+                $affected_rows = $this->_model
                     ->setUpdateData($_POST)
                     ->edit($id);
                 if(0 >= $affected_rows) {
@@ -140,7 +132,7 @@ class Admin_Controller extends MY_Controller
             // view data
             $this->_headerViewVar['h1_title'] = $this->_adminConfig[$this->_className][__FUNCTION__];
             $this->_headerViewVar['method_name'] = __FUNCTION__;
-            $this->_viewVar['data'] = $this->$model
+            $this->_viewVar['data'] = $this->_model
                 ->setSelectFields($this->_adminConfig[$this->_className]['index_field'])
                 ->find($id);
             $this->load_view();
