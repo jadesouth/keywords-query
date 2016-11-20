@@ -16,6 +16,9 @@ class Keywords extends Admin_Controller
      */
     public function advertising()
     {
+        // view data
+        $this->_headerViewVar['h1_title'] = '广告法关键字列表';
+        $this->_headerViewVar['method_name'] = __FUNCTION__;
         // 查询出所有的广告法关键字
         $conditions = [
             'AND'   => [
@@ -40,6 +43,9 @@ class Keywords extends Admin_Controller
      */
     public function address()
     {
+        // view data
+        $this->_headerViewVar['h1_title'] = '地址关键字列表';
+        $this->_headerViewVar['method_name'] = __FUNCTION__;
         // 查询出所有的广告法关键字
         $conditions = [
             'AND'   => [
@@ -83,7 +89,7 @@ class Keywords extends Admin_Controller
             return false;
         }
 
-        http_ajax_response(0, '添加关键字成功!');
+        http_ajax_response(0, '添加关键字成功!', ['id' => $res, 'word' => $word]);
         return true;
     }
 }
