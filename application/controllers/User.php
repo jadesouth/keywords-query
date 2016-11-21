@@ -100,4 +100,16 @@ class User extends Home_Controller
             'real_name'  => $user_real_name,
         ];
     }
+
+    /**
+     * logout 退出账号
+     *
+     * @author haokaiyang
+     * @date 2016-11-21 23:30:39
+     */
+    public function logout()
+    {
+        $this->session->unset_userdata('home_login_user');
+        redirect('/');
+    }
 }

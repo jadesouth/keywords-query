@@ -95,9 +95,10 @@ $(function(){
     });
 });
 // 加载layer
-layui.use(['layer', 'form', 'upload'], function () {
+layui.use(['layer', 'form', 'upload', 'element'], function () {
     var layer = layui.layer;
     var form = layui.form();
+    var element = layui.element();
 });
 // 注册账号
 $(".btn-register").click(function () {
