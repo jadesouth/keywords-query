@@ -140,9 +140,7 @@ class Article extends Admin_Controller
     }
 
     /**
-     * business 业务介绍
-     *
-     * @param int id为1的文章是业务介绍
+     * business 业务介绍=>id:1
      *
      * @author yangbiao<yangbiao@anhao.cn>
      * @date 2016-11-20 14:12:47
@@ -199,9 +197,7 @@ class Article extends Admin_Controller
     }
 
     /**
-     * business 合作案例
-     *
-     * @param int id为2的文章是业务介绍
+     * cases 合作案例=>id:2
      *
      * @author yangbiao<yangbiao@anhao.cn>
      * @date 2016-11-20 14:12:47
@@ -258,9 +254,7 @@ class Article extends Admin_Controller
     }
 
     /**
-     * business 知识产权服务
-     *
-     * @param int id为3的文章是业务介绍
+     * property 知识产权服务=>id:3
      *
      * @author yangbiao<yangbiao@anhao.cn>
      * @date 2016-11-20 14:12:47
@@ -317,9 +311,7 @@ class Article extends Admin_Controller
     }
 
     /**
-     * business 价格管控
-     *
-     * @param int id为4的文章是业务介绍
+     * price 价格管控id=>4
      *
      * @author yangbiao<yangbiao@anhao.cn>
      * @date 2016-11-20 14:12:47
@@ -376,9 +368,7 @@ class Article extends Admin_Controller
     }
 
     /**
-     * business 联系我们
-     *
-     * @param int id为5的文章是业务介绍
+     * about 联系我们=>id:5
      *
      * @author yangbiao<yangbiao@anhao.cn>
      * @date 2016-11-20 14:12:47

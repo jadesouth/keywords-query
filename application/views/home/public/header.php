@@ -15,12 +15,12 @@
         <div class="h-logo fl"><i class="fl"><a href=""><img src="/resources/assets/images/logo.png"/></a></i>西今科技</div>
         <div class="h-hot-menu fl">
             <a href="">首页</a>
-            <a href="">知识产权服务</a>
-            <a href="">价格管控</a>
+            <a href="<?=base_url('articles/property')?>">知识产权服务</a>
+            <a href="<?=base_url('articles/price')?>">价格管控</a>
             <a href="">淘宝天猫顾问</a>
             <a href="" class="menu-hover">广告法小助手</a>
             <a href="">抽检小助手</a>
-            <a href="">关于我们</a>
+            <a href="<?=base_url('articles/about')?>">关于我们</a>
         </div>
         <?php if(empty($_SESSION['home_login_user'])){?>
             <div class="fr register-btn">注册</div>
