@@ -104,14 +104,22 @@ $(".btn-register").click(function () {
     var login_name = $('.register .login_name input').val();
     var password = $('.register .password input').val();
     var con_password = $('.register .con_password input').val();
-    // todo 增加正则验证
+    
     if (undefined == login_name || '' == login_name || false == login_name) {
         layer.msg('请输入用户名');
+        return false;
+    }
+    if (!(/^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){4,19}$/).exec(login_name)){
+        layer.msg('请输入5-20位以字母开头的用户名');
         return false;
     }
     if (undefined == password || '' == password || false == password) {
         layer.msg('请输入登录密码');
         return false;
+    }
+    if (password.length > 16 || password.length < 6){
+        layer.msg('请输入6-16位密码');
+        return;
     }
     if (undefined == con_password || '' == con_password || false == con_password) {
         layer.msg('请输入确定密码');
@@ -144,7 +152,7 @@ $(".btn-register").click(function () {
 $(".btn-login").click(function () {
     var login_name = $('.denglu .login_name input').val();
     var password = $('.denglu .password input').val();
-    // todo 增加正则验证
+    
     if (undefined == login_name || '' == login_name || false == login_name) {
         layer.msg('请输入用户名');
         return false;
@@ -171,3 +179,42 @@ $(".btn-login").click(function () {
         }
     });
 });
+
+// 修改信息
+$(".btn-edit-user").click(function () {
+    $.ajax({
+        type: "POST",
+        url: "/user/detail",
+        data: $('#user-detail').serialize(),
+        dataType: "json",
+        success: function (response) {
+            if (0 == response.status) {
+                layer.alert(response.msg, {icon: 6}, function () {
+                    window.location.reload();
+                });
+            } else if (1 == response.status) {
+                layer.alert(response.msg);
+                return false;
+            }
+        }
+    });
+});
+
+// 修改密码
+$(".btn-edit-user").click(function () {
+    $.ajax({
+        type: "POST",
+        url: "/user/change_password",
+        data: $('#user-change-password').serialize(),
+        dataType: "json",
+        success: function (response) {
+            if (0 == response.status) {
+                layer.alert('修改密码成功', {icon: 6});
+            } else if (1 == response.status) {
+                layer.alert(response.msg);
+                return false;
+            }
+        }
+    });
+});
+

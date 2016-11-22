@@ -22,7 +22,7 @@ class User_model extends MY_Model
      * @author haokaiyang
      * @date   2016-11-20 15:27:44
      */
-    public function add(array $user_info)
+    public function add_user(array $user_info)
     {
         if (empty($user_info['login_name']) || empty($user_info['password'])) {
             return false;
@@ -45,6 +45,7 @@ class User_model extends MY_Model
         }
         return $user_id;
     }
+
 
     /**
      * read_user_list 读取用户列表

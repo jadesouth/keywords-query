@@ -8,13 +8,22 @@
  */
 class User extends Home_Controller
 {
-
+    /**
+     * User constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        if(!in_array($this->router->method,['ajax_register', 'ajax_login']) && empty($this->_loginUser)){
+            redirect('/');
+        }
+    }
     /**
      * ajax_register
      * 用户注册
      *
      * @author haokaiyang
-     * @date   2016年11月20日22:13:55
+     * @date   2016-11-20 22:13:55
      */
     public function ajax_register()
     {
@@ -22,14 +31,10 @@ class User extends Home_Controller
         if (false === $this->form_validation->run()) {
             http_ajax_response(1, $this->form_validation->error_string());
         } else {
-            $user_info['login_name'] = $_POST['login_name'];
-            $user_info['password'] = $_POST['password'];
-            $user_info['con_password'] = $_POST['con_password'];
-            if ($user_info['password'] != $user_info['con_password']) {
-                http_ajax_response(1, '您两次输入的密码不一致');
-                return;
-            }
-            $user_id = $this->_model->add($user_info);
+            $user_info['login_name'] = $this->input->post('login_name',true);
+            $user_info['password'] = $this->input->post('password',true);
+            $user_info['con_password'] = $this->input->post('con_password',true);
+            $user_id = $this->_model->add_user($user_info);
             if (! empty($user_id)) {
                 http_ajax_response(0, '注册成功');
                 $this->set_user_login($user_id, 1, $user_info['login_name'], '');
@@ -44,7 +49,7 @@ class User extends Home_Controller
      * 用户登录
      *
      * @author haokaiyang
-     * @date   2016年11月20日22:14:14
+     * @date   2016-11-20 22:14:14
      */
     public function ajax_login()
     {
@@ -52,8 +57,8 @@ class User extends Home_Controller
         if (false === $this->form_validation->run()) {
             http_ajax_response(1, $this->form_validation->error_string());
         } else {
-            $login_name = $_POST['login_name'];
-            $password = $_POST['password'];
+            $login_name = $this->input->post('login_name',true);;
+            $password = $this->input->post('password',true);
             $user_info = $this->_model->get_user_info(['user.login_name' => $login_name], 'user.id,user.login_name,user.password,user.salt,user.status,user_profile.real_name');
             if (empty($user_info)) {
                 http_ajax_response(1, '登录账号不存在');
@@ -69,14 +74,67 @@ class User extends Home_Controller
         }
     }
 
+    /**
+     * detail
+     * 用户详情
+     *
+     * @author haokaiyang
+     * @date 2016-11-21 22:30:01
+     */
     public function detail()
     {
-        $this->load_view();
+        if('post' == $this->input->method()) {
+            $this->load->library('form_validation');
+            if(false === $this->form_validation->run()) {
+                http_ajax_response(1, $this->form_validation->error_string());
+            } else {
+                
+            }
+        } else {
+            $user_id = $this->_loginUserInfo['id'];
+            $user_info = $this->_model->setTable('user_profile')->setConditions(['user_id'=>$user_id])->get();
+            $this->load_view('',$user_info);
+        }
     }
 
+    /**
+     * change_password
+     * 修改密码
+     *
+     * @author haokaiyang
+     * @date 2016-11-21 22:30:01
+     */
     public function change_password()
     {
-        $this->load_view();
+        if('post' == $this->input->method()) {
+            $this->load->library('form_validation');
+            if(false === $this->form_validation->run()) {
+                http_ajax_response(1, $this->form_validation->error_string());
+            } else {
+                $user_id = $this->input->post('user_id', true);
+                $old_password = $this->input->post('old_password', true);
+                $new_password = $this->input->post('new_password', true);
+                $user_info = $this->_model->get();
+                if (empty($user_info)) {
+                    http_ajax_response(1, '登录账号不存在');
+                    return;
+                }
+                $this->load->helper('security');
+                if ($user_info['password'] !== generate_admin_password($old_password, $user_info['salt'])) {
+                    http_ajax_response(1, '原密码错误,请重新输入');
+                    return;
+                }
+                $update_data['salt'] = random_characters();
+                $update_data['password'] = generate_admin_password($new_password, $update_data['salt']);
+                $result = $this->_model->modify($user_id, $update_data);
+                if($result){
+                    http_ajax_response(0, 'ok');
+                }
+                http_ajax_response(1,'失败,请重试');
+            }
+        } else {
+            $this->load_view();
+        }
     }
 
     /**
@@ -99,5 +157,17 @@ class User extends Home_Controller
             'login_name' => $user_login_name,
             'real_name'  => $user_real_name,
         ];
+    }
+
+    /**
+     * logout 用户退出
+     *
+     * @author haokaiyang
+     * @date 2016-11-21 17:20:25
+     */
+    public function logout()
+    {
+        $this->session->unset_userdata('home_login_user');
+        redirect('user/login');
     }
 }
