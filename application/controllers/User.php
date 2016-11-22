@@ -83,16 +83,27 @@ class User extends Home_Controller
      */
     public function detail()
     {
+        $user_id = $this->_loginUser['id'];
         if('post' == $this->input->method()) {
             $this->load->library('form_validation');
             if(false === $this->form_validation->run()) {
                 http_ajax_response(1, $this->form_validation->error_string());
             } else {
-                
+                $user_info['real_name'] = $this->input->post('real_name',true);
+                $user_info['sex'] = $this->input->post('sex',true);
+                $user_info['phone'] = $this->input->post('phone',true);
+                $user_info['email'] = $this->input->post('email',true);
+                $user_info['qq'] = $this->input->post('qq',true);
+                $user_info['idcard'] = $this->input->post('idcard',true);
+                $result = $this->_model->setTable('user_profile')->setConditions(['user_id'=>$user_id])->setUpdateData($user_info)->update();
+                if($result){
+                    http_ajax_response(0, '修改成功');
+                    return;
+                }
+                http_ajax_response(1,'修改失败,请稍后再试');
             }
         } else {
-            $user_id = $this->_loginUserInfo['id'];
-            $user_info = $this->_model->setTable('user_profile')->setConditions(['user_id'=>$user_id])->get();
+            $user_info = $this->_model->setSelectFields('*')->setTable('user_profile')->setConditions(['user_id'=>$user_id])->get();
             $this->load_view('',$user_info);
         }
     }
@@ -111,10 +122,11 @@ class User extends Home_Controller
             if(false === $this->form_validation->run()) {
                 http_ajax_response(1, $this->form_validation->error_string());
             } else {
-                $user_id = $this->input->post('user_id', true);
+                $this->load->helper(['tools','security']);
+                $user_id = $this->_loginUser['id'];
                 $old_password = $this->input->post('old_password', true);
                 $new_password = $this->input->post('new_password', true);
-                $user_info = $this->_model->get();
+                $user_info = $this->_model->setConditions(['id'=>$user_id])->setSelectFields('password, salt')->get();
                 if (empty($user_info)) {
                     http_ajax_response(1, '登录账号不存在');
                     return;
@@ -128,7 +140,8 @@ class User extends Home_Controller
                 $update_data['password'] = generate_admin_password($new_password, $update_data['salt']);
                 $result = $this->_model->modify($user_id, $update_data);
                 if($result){
-                    http_ajax_response(0, 'ok');
+                    http_ajax_response(0, '修改密码成功');
+                    return;
                 }
                 http_ajax_response(1,'失败,请重试');
             }
