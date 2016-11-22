@@ -202,7 +202,7 @@ $(".btn-edit-user").click(function () {
 });
 
 // 修改密码
-$(".btn-edit-user").click(function () {
+$(".btn-change-password").click(function () {
     $.ajax({
         type: "POST",
         url: "/user/change_password",
@@ -210,7 +210,9 @@ $(".btn-edit-user").click(function () {
         dataType: "json",
         success: function (response) {
             if (0 == response.status) {
-                layer.alert('修改密码成功', {icon: 6});
+                layer.alert(response.msg, {icon: 6}, function () {
+                    window.location.reload();
+                });
             } else if (1 == response.status) {
                 layer.alert(response.msg);
                 return false;
