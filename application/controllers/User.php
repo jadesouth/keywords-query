@@ -160,14 +160,15 @@ class User extends Home_Controller
     }
 
     /**
-     * logout 用户退出
+
+     * logout 退出账号
      *
      * @author haokaiyang
-     * @date 2016-11-21 17:20:25
+     * @date 2016-11-21 23:30:39
      */
     public function logout()
     {
         $this->session->unset_userdata('home_login_user');
-        redirect('user/login');
+        redirect('/');
     }
 }

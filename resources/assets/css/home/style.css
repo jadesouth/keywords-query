@@ -66,9 +66,6 @@ a{color: #333;hide-focus: expression( this.hideFocus=true );outline: none;}
 .h-search i { float:left;width:17px; height:17px; background:url(../../images/style/ico.png) no-repeat left -92px; position:relative; left:16px; top:13px;}
 .h-search .tx { padding-left:24px; height:40px; line-height:40px; font-size:14px; width:160px;}
 .h-search .su { width:78px;height:40px; background:#73b52d; line-height:40px; font-size:16px; color:#fff; cursor:pointer; float:right;-webkit-appearance: none;}
-.login-btn,.register-btn { width:80px;padding:0 10px; margin: 0 10px;height:40px; line-height:40px; font-size:14px; color:#fff; background:#3073ce; text-align:center; -moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius:2px; cursor:pointer; overflow:hidden;}
-.login-info { width:200px;padding:0 10px; margin: 0 10px;height:40px; line-height:40px; font-size:14px; color:#fff; background:#3073ce; text-align:center; -moz-border-radius: 2px;-webkit-border-radius: 2px;border-radius:2px; cursor:pointer; overflow:hidden;}
-.login-info a { color:#fff;}
 
 /* banner */
 .flickerplate {position:relative;width:100%;height:350px;background-color:#e6e6e6;overflow:hidden}

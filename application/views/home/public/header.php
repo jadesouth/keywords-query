@@ -10,6 +10,18 @@
 </head>
 
 <body>
+<div style="background-color: #393D49;float: left;width: 100%">
+    <span class="layui-breadcrumb" lay-separator="|" style="float: right;padding-right: 12%;color: #FFFFFF">
+        <?php if(empty($_SESSION['home_login_user'])){?>
+            <a><span style="color: #FFFFFF;cursor:Default;" class="register-btn">注册</span></a>
+            <a><span style="color: #FFFFFF;cursor:Default;" class="login-btn">登陆</span></a>
+        <?php }else{ ?>
+            <a href="/user/detail"><span style="color: #FFFFFF;cursor:Default;">个人中心</span></a>
+            <a href="/user/logout"><span style="color: #FFFFFF;cursor:Default;">退出</span></a>
+        <?php }?>
+    </span>
+</div>
+
 <div class="header clearfix">
     <div class="m-width clearfix">
         <div class="h-logo fl"><i class="fl"><a href=""><img src="/resources/assets/images/logo.png"/></a></i>西今科技</div>
@@ -22,13 +34,6 @@
             <a href="">抽检小助手</a>
             <a href="">关于我们</a>
         </div>
-        <?php if(empty($_SESSION['home_login_user'])){?>
-            <div class="fr register-btn">注册</div>
-            <div class="fr login-btn">登陆</div>
-        <?php }else{ ?>
-            <div class="fr login-info">欢迎您：<a href=""><?= !empty($_SESSION['home_login_user']['real_name']) ? $_SESSION['home_login_user']['real_name'] : $_SESSION['home_login_user']['login_name'] ?></a>
-            </div>
-        <?php }?>
     </div>
 </div>
 <div class="m-width">
