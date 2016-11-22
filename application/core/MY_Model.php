@@ -820,4 +820,19 @@ class MY_Model extends CI_Model
         $this->_selectFields = $selectFields;
         return $this;
     }
+
+
+    /**
+     * setTable
+     *
+     * @param string $table_name
+     * @return $this
+     *
+     * @author haokaiyang
+     * @date   2016-11-22 09:49:00
+     */
+    public function setTable(string $table_name){
+        $this->_table = $table_name;
+        return $this;
+    }
 }

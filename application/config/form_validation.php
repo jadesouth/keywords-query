@@ -33,12 +33,25 @@ $config = [
         ['field' => 'contents', 'label' => '内容', 'rules' => 'trim|required'],
     ],
     'user/ajax_register' => [ // 用户注册
-        ['field' => 'login_name', 'laber' => '登录名', 'rules'=> 'trim|required|is_unique[user.login_name]'],
-        ['field' => 'password', 'laber' => '密码', 'rules'=> 'trim|required'],
-        ['field' => 'con_password', 'laber' => '确认密码', 'rules'=> 'trim|required|matches[password]'],
+        ['field' => 'login_name', 'label' => '登录名', 'rules'=> 'trim|required|is_unique[user.login_name]'],
+        ['field' => 'password', 'label' => '密码', 'rules'=> 'trim|required'],
+        ['field' => 'con_password', 'label' => '确认密码', 'rules'=> 'trim|required|matches[password]'],
     ],
     'user/ajax_login' => [ // 用户注册
-        ['field' => 'login_name', 'laber' => '登录名', 'rules'=> 'trim|required'],
-        ['field' => 'password', 'laber' => '密码', 'rules'=> 'trim|required'],
+        ['field' => 'login_name', 'label' => '登录名', 'rules'=> 'trim|required'],
+        ['field' => 'password', 'label' => '密码', 'rules'=> 'trim|required'],
+    ],
+    'user/detail' => [ // 个人设置
+        ['field' => 'real_name', 'label' => '真实姓名', 'rules'=> 'trim'],
+        ['field' => 'sex', 'label' => '性别', 'rules'=> 'trim|in_list[1,2]'],
+        ['field' => 'phone', 'label' => '手机', 'rules'=> 'trim|integer'],
+        ['field' => 'email', 'label' => '邮箱', 'rules'=> 'trim|valid_email'],
+        ['field' => 'qq', 'label' => 'QQ', 'rules'=> 'trim|integer|min_length[6]|max_length[11]'],
+        ['field' => 'idcard', 'label' => '身份证', 'rules'=> 'trim|min_length[16]|max_length[18]'],
+    ],
+    'user/change_password' => [ // 修改密码
+        ['field' => 'old_password', 'label' => '当前密码', 'rules'=> 'trim|required'],
+        ['field' => 'new_password', 'label' => '新密码', 'rules'=> 'trim|required'],
+        ['field' => 'con_new_password', 'label' => '重复输入新密码', 'rules'=> 'trim|required|matches[new_password]'],
     ],
 ];
