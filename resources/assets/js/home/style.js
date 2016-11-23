@@ -138,11 +138,11 @@ $(".btn-register").click(function () {
         dataType: "json",
         success: function (response) {
             if (0 == response.status) {
-                layer.alert(response.msg, {icon: 6}, function () {
+                layer.msg(response.msg, {icon: 6, time:1000}, function () {
                     window.location.reload();
                 });
             } else if (1 == response.status) {
-                layer.alert(response.msg);
+                layer.alert(response.msg, {icon: 2});
                 return false;
             }
         }
@@ -170,11 +170,11 @@ $(".btn-login").click(function () {
         dataType: "json",
         success: function (response) {
             if (0 == response.status) {
-                layer.alert(response.msg, {icon: 6}, function () {
+                layer.msg(response.msg, {icon: 6, time:1000}, function () {
                     window.location.reload();
                 });
             } else if (1 == response.status) {
-                layer.alert(response.msg);
+                layer.alert(response.msg, {icon: 2});
                 return false;
             }
         }
