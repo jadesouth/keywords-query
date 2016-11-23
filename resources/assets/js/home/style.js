@@ -139,7 +139,7 @@ $(".btn-register").click(function () {
         success: function (response) {
             if (0 == response.status) {
                 layer.alert(response.msg, {icon: 6}, function () {
-                    window.location.href = "/";
+                    window.location.reload();
                 });
             } else if (1 == response.status) {
                 layer.alert(response.msg);
@@ -171,7 +171,7 @@ $(".btn-login").click(function () {
         success: function (response) {
             if (0 == response.status) {
                 layer.alert(response.msg, {icon: 6}, function () {
-                    window.location.href = "/";
+                    window.location.reload();
                 });
             } else if (1 == response.status) {
                 layer.alert(response.msg);
