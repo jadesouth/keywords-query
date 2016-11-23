@@ -28,12 +28,13 @@
         <div class="h-logo fl"><i class="fl"><a href=""><img src="/resources/assets/images/logo.png"/></a></i>西今科技</div>
         <div class="h-hot-menu fl">
             <a <?='index' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url()?>">首页</a>
+            <a <?='business' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('articles/business')?>">业务介绍</a>
             <a <?='property' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('articles/property')?>">知识产权服务</a>
             <a <?='price' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('articles/price')?>">价格管控</a>
+            <a <?='cases' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('articles/price')?>">合作案例</a>
             <a <?='advertising' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('keywords/advertising')?>">广告法检测</a>
             <a <?='address' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('keywords/address')?>">地址检测</a>
             <a <?='about' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('articles/about')?>">关于我们</a>
         </div>
     </div>
 </div>
-<div class="m-width">

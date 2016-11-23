@@ -220,4 +220,3 @@ $(".btn-change-password").click(function () {
         }
     });
 });
-

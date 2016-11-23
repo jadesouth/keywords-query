@@ -1,3 +1,4 @@
+<div class="m-width">
 <blockquote style="margin-left:25px;" class="layui-elem-quote">地址关键字检测</blockquote>
 <div style="margin-top:20px;">
     <form class="layui-form">
@@ -14,6 +15,7 @@
             </div>
         </div>
     </form>
+</div>
 </div>
 <script>
     $(function() {

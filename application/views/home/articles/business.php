@@ -1,4 +1,4 @@
-<div style="margin-top: 100px;">
+<div class="m-width">
     <div>
         <?=$data['content']?>
     </div>

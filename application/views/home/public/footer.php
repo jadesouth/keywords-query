@@ -1,4 +1,3 @@
-</div>
 <div class="footer clearfix">
     <div class="m-width clearfix">
         <div class="fr clearfix">

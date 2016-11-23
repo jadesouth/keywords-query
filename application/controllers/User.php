@@ -83,6 +83,7 @@ class User extends Home_Controller
      */
     public function detail()
     {
+        $this->_headerViewVar['title'] = '用户详情';
         $user_id = $this->_loginUser['id'];
         if('post' == $this->input->method()) {
             $this->load->library('form_validation');

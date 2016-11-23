@@ -8,11 +8,6 @@
  */
 class Articles extends Home_Controller
 {
-    public function index()
-    {
-
-    }
-
     /**
      * business 业务介绍id=>1
      *
@@ -21,6 +16,7 @@ class Articles extends Home_Controller
      */
     public function business()
     {
+        $this->_headerViewVar['title'] = '业务介绍';
         $_id = 1;
         $this->load->model('article_model');
         $this->article_model->setSelectFields('content');
@@ -36,6 +32,7 @@ class Articles extends Home_Controller
      */
     public function cases()
     {
+        $this->_headerViewVar['title'] = '合作案例';
         $_id = 2;
         $this->load->model('article_model');
         $this->article_model->setSelectFields('content');
@@ -51,6 +48,7 @@ class Articles extends Home_Controller
      */
     public function property()
     {
+        $this->_headerViewVar['title'] = '知识产权服务';
         $_id = 3;
         $this->load->model('article_model');
         $this->article_model->setSelectFields('content');
@@ -66,6 +64,7 @@ class Articles extends Home_Controller
      */
     public function price()
     {
+        $this->_headerViewVar['title'] = '价格管控';
         $_id = 4;
         $this->load->model('article_model');
         $this->article_model->setSelectFields('content');
@@ -74,18 +73,18 @@ class Articles extends Home_Controller
     }
 
     /**
-     * about 联系我们=>id:5
+     * about 关于我们=>id:5
      *
      * @author yangbiao<yangbiao@anhao.cn>
      * @date 2016-11-21 23:07:01
      */
     public function about()
     {
+        $this->_headerViewVar['title'] = '关于我们';
         $_id = 5;
         $this->load->model('article_model');
         $this->article_model->setSelectFields('content');
         $this->_viewVar['data'] = $this->article_model->find($_id);
         $this->load_view('articles/business');
     }
-
 }

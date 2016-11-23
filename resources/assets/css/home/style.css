@@ -56,8 +56,8 @@ a{color: #333;hide-focus: expression( this.hideFocus=true );outline: none;}
 .h-logo i {width:56px; height:56px; margin:0 22px 0 11px;}
 .h-logo i img{width:100%; height:100%;}
 .h-logo span{ font-size:16px; display:block; margin-top:5px;}
-.h-hot-menu { font-size:18px; height:20px; margin-top:16px;}
-.h-hot-menu a { float:left; height:20px; padding:0 5px; margin-right:20px;}
+.h-hot-menu { font-size:18px; height:30px; margin-top:16px;}
+.h-hot-menu a { float:left; height:30px; padding:0 8px; margin-right:20px;}
 .h-hot-menu a:hover {border-bottom:2px solid #3073ce; color:#3073ce;}
 .h-hot-menu a.menu-hover {border-bottom:2px solid #3073ce; color:#3073ce;}
 
