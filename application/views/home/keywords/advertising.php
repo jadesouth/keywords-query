@@ -21,7 +21,7 @@ $(function() {
     layui.use('layer', function(){
         var layer = layui.layer;
     });
-    // 添加关键字
+    // 检测关键字
     $("#check-ok").click(function() {
         var keyword = $("textarea[name='keywords']").val();
         if('' == keyword || null == keyword || undefined == keyword) {
@@ -45,40 +45,6 @@ $(function() {
                         area: ['420px', '240px'], //宽高
                         content: data.data.contents
                     });
-                    return true;
-                } else {
-                    layer.open({
-                        icon: 2,
-                        content: data.msg
-                    });
-                    return false;
-                }
-            }
-        });
-    });
-    // 删除关键字
-    var all_keyword = $("#all-keywords");
-    all_keyword.delegate("button", "click", function(){
-        var butE = $(this);
-        var keyword = butE.attr("data-id");
-        if('' == keyword || null == keyword || undefined == keyword || 0 >= keyword) {
-            layer.open({
-                icon: 2,
-                content: "删除操作不合法,请刷新重试!"
-            });
-            return false;
-        }
-        $.ajax({
-            type: "POST",
-            url: "<?=base_url('admin/keywords/delete')?>",
-            data: {id: keyword},
-            dataType: "JSON",
-            success: function(data) {
-                if(0 == data.status) {
-                    butE.remove();
-                    if(0 >= all_keyword.children().length) {
-                        all_keyword.prepend('<span id="no-keywords">暂无关键字</span>');
-                    }
                     return true;
                 } else {
                     layer.open({

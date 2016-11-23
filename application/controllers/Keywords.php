@@ -18,6 +18,11 @@ class Keywords extends Home_Controller
     {
         $this->_headerViewVar['title'] = '广告法检测';
         if('post' == $this->input->method()) {
+            // 检测登录
+            if (! $this->is_login()) {
+                http_ajax_response(-1, '请您先登录');
+                return false;
+            }
             $this->load->library('form_validation');
             if(false === $this->form_validation->run()) {
                 http_ajax_response(1, $this->form_validation->error_string());
@@ -53,7 +58,13 @@ class Keywords extends Home_Controller
      */
     public function address()
     {
+        $this->_headerViewVar['title'] = '地址关键字检测';
         if('post' == $this->input->method()) {
+            // 检测登录
+            if (! $this->is_login()) {
+                http_ajax_response(-1, '请您先登录');
+                return false;
+            }
             $this->load->library('form_validation');
             if(false === $this->form_validation->run()) {
                 http_ajax_response(1, $this->form_validation->error_string());
@@ -73,8 +84,8 @@ class Keywords extends Home_Controller
                     });
                     $contents = str_ireplace($keywords, $keywords_replace, $contents);
                 }
-
-                http_ajax_response(0, 'ok', $contents);
+                $contents = '<p style="padding:20px 10px;line-height:150%">' . $contents . '</p>';
+                http_ajax_response(0, 'ok', ['contents' => $contents]);
             }
         } else {
             $this->load_view();
