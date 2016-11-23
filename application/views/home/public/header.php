@@ -11,14 +11,14 @@
 </head>
 
 <body>
-<div style="background-color: #393D49;float: left;width: 100%">
-    <span class="layui-breadcrumb" lay-separator="|" style="float: right;padding-right: 12%;color: #FFFFFF">
+<div style="width:100%;padding:5px 0;background-color:#333;float:left;">
+    <span class="layui-breadcrumb" lay-separator="|" style="float:right;padding-right:6%;color:#FFFFFF">
         <?php if(empty($_SESSION['home_login_user'])){?>
-            <a><span style="color: #FFFFFF;cursor:Default;" class="register-btn">注册</span></a>
-            <a><span style="color: #FFFFFF;cursor:Default;" class="login-btn">登陆</span></a>
+            <a><span style="color:#FFFFFF;" class="register-btn">注册</span></a>
+            <a><span style="color:#FFFFFF;" class="login-btn">登陆</span></a>
         <?php }else{ ?>
-            <a href="/user/detail"><span style="color: #FFFFFF;cursor:Default;">个人中心</span></a>
-            <a href="/user/logout"><span style="color: #FFFFFF;cursor:Default;">退出</span></a>
+            <a href="/user/detail"><span style="color:#FFFFFF;cursor:Default;">个人中心</span></a>
+            <a href="/user/logout"><span style="color:#FFFFFF;cursor:Default;">退出</span></a>
         <?php }?>
     </span>
 </div>
@@ -27,13 +27,12 @@
     <div class="m-width clearfix">
         <div class="h-logo fl"><i class="fl"><a href=""><img src="/resources/assets/images/logo.png"/></a></i>西今科技</div>
         <div class="h-hot-menu fl">
-            <a href="">首页</a>
-            <a href="<?=base_url('articles/property')?>">知识产权服务</a>
-            <a href="<?=base_url('articles/price')?>">价格管控</a>
-            <a href="">淘宝天猫顾问</a>
-            <a href="" class="menu-hover">广告法小助手</a>
-            <a href="">抽检小助手</a>
-            <a href="<?=base_url('articles/about')?>">关于我们</a>
+            <a <?='index' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url()?>">首页</a>
+            <a <?='property' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('articles/property')?>">知识产权服务</a>
+            <a <?='price' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('articles/price')?>">价格管控</a>
+            <a <?='advertising' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('keywords/advertising')?>">广告法检测</a>
+            <a <?='address' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('keywords/address')?>">地址检测</a>
+            <a <?='about' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('articles/about')?>">关于我们</a>
         </div>
     </div>
 </div>
