@@ -33,7 +33,7 @@ class Home_Controller extends MY_Controller
      * @author wangnan <wangnanphp@163.com>
      * @date 2016-11-17 15:51:18
      */
-    public function load_view(string $view = '', array $var = [])
+    protected function load_view(string $view = '', array $var = [])
     {
         // 分配给视图方法名
         if(empty($this->_headerViewVar['method_name'])) {

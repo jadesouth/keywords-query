@@ -3,10 +3,11 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>首页</title>
+    <title><?=$title?></title>
     <link href="<?=base_url()?>resources/assets/css/home/style.css" rel="stylesheet">
     <!-- layui -->
     <link href="<?=base_url()?>resources/assets/libs/layui/css/layui.css" rel="stylesheet" type="text/css">
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
 </head>
 
 <body>

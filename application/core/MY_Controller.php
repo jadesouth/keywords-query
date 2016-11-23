@@ -55,4 +55,17 @@ class MY_Controller extends CI_Controller
         // 导航用的控制器名
         $this->_headerViewVar['controller'] = $this->_className;
     }
+
+    /**
+     * is_login 是否登录
+     *
+     * @return bool
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date 2016-11-23 22:20:16
+     */
+    protected function is_login(): bool
+    {
+        return empty($this->_loginUser) ? false : true;
+    }
 }
