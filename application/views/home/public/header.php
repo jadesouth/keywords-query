@@ -8,6 +8,7 @@
     <!-- layui -->
     <link href="<?=base_url()?>resources/assets/libs/layui/css/layui.css" rel="stylesheet" type="text/css">
     <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <link href="<?=base_url()?>resources/assets/libs/qq-chat/css/zzsc.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>

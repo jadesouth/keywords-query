@@ -38,9 +38,32 @@
     </div>
 </div>
 <div class="content_mark"></div>
+<div class="qqserver">
+    <div class="qqserver_fold">
+        <div></div>
+    </div>
+    <div class="qqserver-body" style="display: block;">
+        <div class="qqserver-header">
+            <div></div>
+            <span class="qqserver_arrow"></span> </div>
+        <ul>
+            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" target="_blank">
+                    <div>客服咨询</div>
+                    <span>琳琳</span> </a> </li>
+            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" target="_blank">
+                    <div>客服咨询</div>
+                    <span>云云</span> </a> </li>
+            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=123456789&amp;site=qq&amp;menu=yes" target="_blank">
+                    <div>推广合作</div>
+                    <span class="qqserver-service-alert">单单</span> </a> </li>
+        </ul>
+        <div class="qqserver-footer"><span class="qqserver_icon-alert"></span><a class="text-primary" href="<?=base_url('articles/about')?>" target="_blank">关于我们</a> </div>
+    </div>
+</div>
 <!-- 弹出层部分end -->
 <script src="<?=base_url()?>resources/assets/libs/modernizr-custom/modernizr-custom-v2.7.1.min.js"></script>
 <script src="<?=base_url()?>resources/assets/libs/layui/layui.js" type="application/javascript"></script>
-<script src="<?=base_url()?>resources/assets/js/home/style.js"></script>
+<script src="<?=base_url()?>resources/assets/js/home/style.js" type="text/javascript"></script>
+<script src="<?=base_url()?>resources/assets/libs/qq-chat/js/zzsc.js" type="text/javascript"></script>
 </body>
 </html>
