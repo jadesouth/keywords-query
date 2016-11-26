@@ -23,6 +23,10 @@ class Keywords extends Home_Controller
                 http_ajax_response(-1, '请您先登录');
                 return false;
             }
+            if(0 != $this->_loginUser['status']) {
+                http_ajax_response(2, '您当前无查询权限');
+                return false;
+            }
             $this->load->library('form_validation');
             if(false === $this->form_validation->run()) {
                 http_ajax_response(1, $this->form_validation->error_string());
@@ -63,6 +67,10 @@ class Keywords extends Home_Controller
             // 检测登录
             if (! $this->is_login()) {
                 http_ajax_response(-1, '请您先登录');
+                return false;
+            }
+            if(0 != $this->_loginUser['status']) {
+                http_ajax_response(2, '您当前无查询权限');
                 return false;
             }
             $this->load->library('form_validation');
