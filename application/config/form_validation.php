@@ -35,6 +35,11 @@ $config = [
     'keywords/address' => [ // 地址关键字查询
         ['field' => 'contents', 'label' => '内容', 'rules' => 'trim|required'],
     ],
+    'keywords/apply' => [ // 关键字查询申请
+        ['field' => 'phone', 'label' => '手机号码', 'rules' => 'trim|required|is_natural_no_zero|integer'],
+        ['field' => 'email', 'label' => '电子邮件', 'rules' => 'trim|required|valid_email'],
+        ['field' => 'qq', 'label' => 'QQ号码', 'rules' => 'trim|required|is_natural_no_zero|integer|greater_than_equal_to[10000]'],
+    ],
     'user/ajax_register' => [ // 用户注册
         ['field' => 'login_name', 'label' => '登录名', 'rules'=> 'trim|required|is_unique[user.login_name]'],
         ['field' => 'password', 'label' => '密码', 'rules'=> 'trim|required'],
