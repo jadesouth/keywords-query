@@ -152,6 +152,50 @@ class MY_Model extends CI_Model
     }
 
     /**
+     * leftCount 左关联查询总数
+     *
+     * @param bool $clean_up 是否清理查询条件,默认清理
+     *
+     * @return bool|int 查询记录的总条数
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date 2016-11-27 20:51:49
+     */
+    public function leftCount(bool $clean_up = true)
+    {
+        reset($this->_leftJoin);
+        if(empty($table = key($this->_leftJoin)) || empty($join_cond = current($this->_leftJoin))) {
+            return false;
+        }
+
+        $this->conditions($clean_up);
+        $this->db->join($table, $join_cond, 'left');
+        if(true === $clean_up) {
+            $this->_leftJoin = [];
+        }
+
+        return $this->db->from($this->_table)
+            ->count_all_results();
+    }
+
+    public function rightCount(bool $clean_up = true)
+    {
+        reset($this->_rightJoin);
+        if(empty($table = key($this->_rightJoin)) || empty($join_cond = current($this->_rightJoin))) {
+            return false;
+        }
+
+        $this->conditions($clean_up);
+        $this->db->join($table, $join_cond, 'right');
+        if(true === $clean_up) {
+            $this->_rightJoin = [];
+        }
+
+        return $this->db->from($this->_table)
+            ->count_all_results();
+    }
+
+    /**
      * leftGet 左关联查询单条数据
      *
      * @param bool $clean_up 是否清理查询条件,默认清理
@@ -225,7 +269,7 @@ class MY_Model extends CI_Model
     public function leftRead(bool $clean_up = true)
     {
         reset($this->_leftJoin);
-        if(empty($table = key($this->_leftJoin)) || $join_cond = current($this->_leftJoin)) {
+        if(empty($table = key($this->_leftJoin)) || empty($join_cond = current($this->_leftJoin))) {
             return false;
         }
 
@@ -742,16 +786,21 @@ class MY_Model extends CI_Model
     /**
      * print_query 打印最后一条查询语句
      *
+     * @return $this
+     *
      * @author wangnan <wangnanphp@163.com>
      * @date   2016-11-14 13:12:12
      */
     public function print_query()
     {
         echo $this->last_query();
+        return $this;
     }
 
     /**
      * print_query_error 打印查询错误
+     *
+     * @return $this
      *
      * @author wangnan <wangnanphp@163.com>
      * @date   2016-11-14 13:13:41
@@ -759,6 +808,7 @@ class MY_Model extends CI_Model
     public function print_query_error()
     {
         var_dump($this->db->error());
+        return $this;
     }
 
     /**
