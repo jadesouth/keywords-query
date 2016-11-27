@@ -43,6 +43,7 @@
                 <li<?='article' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/article/business')?>">内容管理</a></li>
                 <li<?='user' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/user')?>">用户管理</a></li>
                 <li<?='admin' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/index')?>">管理员管理</a></li>
+                <li<?='articles' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/articles')?>">最新咨訊</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right main-nav-user-info">
                 <li class="dropdown">

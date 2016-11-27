@@ -87,4 +87,51 @@ class Articles extends Home_Controller
         $this->_viewVar['data'] = $this->article_model->find($_id);
         $this->load_view('articles/business');
     }
+
+    /**
+     * business 最新咨询
+     *
+     * @author yangbiao<yangbiao@anhao.cn>
+     * @date 2016-11-26 23:48:45
+     */
+    public function index(int $page = 0)
+    {
+        // 分页页码
+        $page = 0 >= $page ? 1 : $page;
+        // view data
+        $this->_headerViewVar['h1_title'] = '文章列表';
+        $this->_headerViewVar['method_name'] = __FUNCTION__;
+        $this->_viewVar['table_header'] = ['文章标题', '短标题'];
+
+        // model
+        $this->load->model('article_model');
+        // 获取记录总条数
+        $Conditions = ['cid'=>1];
+        $this->article_model->setConditions($Conditions);
+        $count = $this->article_model->count(false);
+        if(! empty($count)) {
+            // Page configure
+            $this->load->library('pagination');
+            $config['base_url'] = base_url("articles/index");
+            $config['total_rows'] = (int)$count;
+            $this->pagination->initialize($config);
+            $this->_viewVar['page'] = $this->pagination->create_links();
+            // get page data
+            $this->_viewVar['data'] = $this->article_model
+                ->setSelectFields('id,title,resume,subtitle')
+                ->getPage($page, ADMIN_PAGE_SIZE);
+
+        }
+
+        // 加载视图
+        $this->load_view();
+    }
+    public function desc(int $id = 0)
+    {
+        $this->_headerViewVar['title'] = '咨询详情';
+        $this->load->model('article_model');
+        $this->article_model->setSelectFields('*');
+        $this->_viewVar['data'] = $this->article_model->find($id);
+        $this->load_view();
+    }
 }
