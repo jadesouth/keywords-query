@@ -10,7 +10,7 @@
             foreach($data as $tr) {
                 echo '<tr>';
                 foreach ($tr as $column_name => $td) { $td = 'status' == $column_name ? $status[$td] : $td; echo "<td>{$td}</td>";}
-                echo '<td><a class="btn btn-info btn-xs" href="' . base_url() . "detection/info/{$tr['id']}\">查看详情</a></td></tr>";
+                echo '<td><button class="btn btn-info btn-xs but-details" data-detection="' . $tr['id'] . '">查看详情</button></td></tr>';
             }
         } else {
             echo '<tr><td style="text-align:center;font-size:16px;padding:30px 0px;" colspan="' . (count($table_header) + 1) .'">暂无数据</td></tr>';
@@ -20,3 +20,81 @@
     </table>
 </div>
 <?php if(! empty($page)){echo $page;}?>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">申请详情</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal" id="user-form">
+                    <input type="hidden" name="user_id" id="user_id">
+                    <div class="form-group">
+                        <label for="login_name" class="col-sm-3 control-label">申请者</label>
+                        <div class="col-sm-9">
+                            <input type="text" disabled class="form-control" id="login_name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sex" class="col-sm-3 control-label">手机号</label>
+                        <div class="col-sm-9">
+                            <input type="text" disabled class="form-control" id="phone">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="qq" class="col-sm-3 control-label">QQ</label>
+                        <div class="col-sm-9">
+                            <input type="text" disabled class="form-control" id="qq">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-3 control-label">邮箱地址</label>
+                        <div class="col-sm-9">
+                            <input type="text" disabled class="form-control" id="email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg_time" class="col-sm-3 control-label">申请时间</label>
+                        <div class="col-sm-9">
+                            <input type="text" disabled class="form-control" id="apply_time">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(function() {
+        layui.use('layer', function(){
+            var layer = layui.layer;
+        });
+
+        $('.but-details').click(function(){
+            var detection = $(this).attr('data-detection');
+            var url = "detection/details/" + detection;
+            $.ajax({
+                type: "GET",
+                url: url,
+                dataType: "JSON",
+                success: function(response){
+                    if(0 == response.status) {
+                        $("#login_name").val(response.data.login_name);
+                        $("#phone").val(response.data.phone);
+                        $("#email").val(response.data.email);
+                        $("#qq").val(response.data.qq);
+                        $("#apply_time").val(response.data.apply_time);
+                        $('#myModal').modal();
+                    } else {
+                        layer.alert(response.msg, {icon: 2});
+                    }
+                }
+            });
+        });
+    });
+</script>

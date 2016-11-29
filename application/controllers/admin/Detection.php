@@ -45,4 +45,32 @@ class Detection extends Admin_Controller
         // 加载视图
         $this->load_view();
     }
+
+    /**
+     * details 获取详情信息
+     *
+     * @param int $id ID
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date 2016-11-29 13:33:17
+     */
+    public function details(int $id = 0)
+    {
+        if(0 >= $id) {
+            http_ajax_response(1, '请求参数有误');
+            return;
+        }
+        // 获取详情信息
+        $this->load->model('detection_apply_info_model');
+        $detection_info = $this->detection_apply_info_model
+            ->setSelectFields('login_name,phone,qq,email,apply_time')
+            ->setAndCond(['detection_apply_info.id' => $id, 'detection_apply_info.status' => 0])
+            ->setLeftJoin(['user' => 'detection_apply_info.user_id = user.id'])
+            ->leftGet();
+        if(empty($detection_info)) {
+            http_ajax_response(-1, '详情信息不存在');
+        } else {
+            http_ajax_response(0, 'ok', $detection_info);
+        }
+    }
 }
