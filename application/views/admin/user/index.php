@@ -115,7 +115,6 @@
         </div>
     </div>
 </div>
-<script src="<?=base_url()?>resources/assets/libs/layui/layui.js" type="application/javascript"></script>
 <script type="application/javascript">
     $(function() {
         layui.use('layer', function(){

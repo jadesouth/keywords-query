@@ -3,8 +3,8 @@
 /**
  * Class MY_Model 应用的基模型
  *
- * @property CI_DB_query_builder    $db
- * @property CI_Loader              $load
+ * @property CI_DB_query_builder $db
+ * @property CI_Loader           $load
  *
  * @author wangnan <wangnanphp@163.com>
  * @date   2016-11-11 00:41:28
@@ -152,25 +152,69 @@ class MY_Model extends CI_Model
     }
 
     /**
+     * leftCount 左关联查询总数
+     *
+     * @param bool $clean_up 是否清理查询条件,默认清理
+     *
+     * @return bool|int 查询记录的总条数
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date   2016-11-27 20:51:49
+     */
+    public function leftCount(bool $clean_up = true)
+    {
+        reset($this->_leftJoin);
+        if (empty($table = key($this->_leftJoin)) || empty($join_cond = current($this->_leftJoin))) {
+            return false;
+        }
+
+        $this->conditions($clean_up);
+        $this->db->join($table, $join_cond, 'left');
+        if (true === $clean_up) {
+            $this->_leftJoin = [];
+        }
+
+        return $this->db->from($this->_table)
+            ->count_all_results();
+    }
+
+    public function rightCount(bool $clean_up = true)
+    {
+        reset($this->_rightJoin);
+        if (empty($table = key($this->_rightJoin)) || empty($join_cond = current($this->_rightJoin))) {
+            return false;
+        }
+
+        $this->conditions($clean_up);
+        $this->db->join($table, $join_cond, 'right');
+        if (true === $clean_up) {
+            $this->_rightJoin = [];
+        }
+
+        return $this->db->from($this->_table)
+            ->count_all_results();
+    }
+
+    /**
      * leftGet 左关联查询单条数据
      *
      * @param bool $clean_up 是否清理查询条件,默认清理
      * @return array|bool
      *
      * @author wangnan <wangnanphp@163.com>
-     * @date 2016-11-15 15:29:29
+     * @date   2016-11-15 15:29:29
      */
     public function leftGet(bool $clean_up = true)
     {
         reset($this->_leftJoin);
-        if(empty($table = key($this->_leftJoin)) || empty($join_cond = current($this->_leftJoin))) {
+        if (empty($table = key($this->_leftJoin)) || empty($join_cond = current($this->_leftJoin))) {
             return false;
         }
 
         $this->conditions($clean_up);
         $this->db->join($table, $join_cond, 'left');
         $select_fields = $this->_selectFields;
-        if(true === $clean_up) {
+        if (true === $clean_up) {
             $this->_selectFields = 'id';
             $this->_leftJoin = [];
         }
@@ -189,19 +233,19 @@ class MY_Model extends CI_Model
      * @return array|bool
      *
      * @author wangnan <wangnanphp@163.com>
-     * @date 2016-11-15 15:31:03
+     * @date   2016-11-15 15:31:03
      */
     public function rightGet(bool $clean_up = true)
     {
         reset($this->_rightJoin);
-        if(empty($table = key($this->_rightJoin)) || empty($join_cond = current($this->_rightJoin))) {
+        if (empty($table = key($this->_rightJoin)) || empty($join_cond = current($this->_rightJoin))) {
             return false;
         }
 
         $this->conditions($clean_up);
         $this->db->join($table, $join_cond, 'right');
         $select_fields = $this->_selectFields;
-        if(true === $clean_up) {
+        if (true === $clean_up) {
             $this->_selectFields = 'id';
             $this->_rightJoin = [];
         }
@@ -220,19 +264,19 @@ class MY_Model extends CI_Model
      * @return array|bool
      *
      * @author wangnan <wangnanphp@163.com>
-     * @date 2016-11-15 14:50:00
+     * @date   2016-11-15 14:50:00
      */
     public function leftRead(bool $clean_up = true)
     {
         reset($this->_leftJoin);
-        if(empty($table = key($this->_leftJoin)) || $join_cond = current($this->_leftJoin)) {
+        if (empty($table = key($this->_leftJoin)) || empty($join_cond = current($this->_leftJoin))) {
             return false;
         }
 
         $this->conditions($clean_up);
         $this->db->join($table, $join_cond, 'left');
         $select_fields = $this->_selectFields;
-        if(true === $clean_up) {
+        if (true === $clean_up) {
             $this->_selectFields = 'id';
             $this->_leftJoin = [];
         }
@@ -250,19 +294,19 @@ class MY_Model extends CI_Model
      * @return array|bool
      *
      * @author wangnan <wangnanphp@163.com>
-     * @date 2016-11-15 15:28:34
+     * @date   2016-11-15 15:28:34
      */
     public function rightRead(bool $clean_up = true)
     {
         reset($this->_rightJoin);
-        if(empty($table = key($this->_rightJoin)) || $join_cond = current($this->_rightJoin)) {
+        if (empty($table = key($this->_rightJoin)) || $join_cond = current($this->_rightJoin)) {
             return false;
         }
 
         $this->conditions($clean_up);
         $this->db->join($table, $join_cond, 'right');
         $select_fields = $this->_selectFields;
-        if(true === $clean_up) {
+        if (true === $clean_up) {
             $this->_selectFields = 'id';
             $this->_rightJoin = [];
         }
@@ -376,8 +420,8 @@ class MY_Model extends CI_Model
     /**
      * find 根据数据表的ID查询一条数据
      *
-     * @param int $id 数据ID
-     * @param bool  $clean_up 是否清理查询条件和查询数据,默认清理
+     * @param int  $id       数据ID
+     * @param bool $clean_up 是否清理查询条件和查询数据,默认清理
      * @return array|bool 查询的结果集
      *
      * @author wangnan <wangnanphp@163.com>
@@ -494,11 +538,11 @@ class MY_Model extends CI_Model
      * @return $this|bool
      *
      * @author wangnan <wangnanphp@163.com>
-     * @date 2016-11-15 16:01:25
+     * @date   2016-11-15 16:01:25
      */
     public function setAndCond(array $condition)
     {
-        if(empty($condition) || ! is_array($condition)) {
+        if (empty($condition) || ! is_array($condition)) {
             return false;
         }
         $this->_conditions['AND'] = $condition;
@@ -526,7 +570,7 @@ class MY_Model extends CI_Model
         }
         $logical = empty($conditions['AND']) ? 'AND' : 'OR';
         $this->parseConditions($this->_conditions, $logical);
-        $this->db->where($this->_table.'.deleted_at', '0000-00-00 00:00:00');
+        $this->db->where($this->_table . '.deleted_at', '0000-00-00 00:00:00');
         // 清理查询条件
         true === $clean_up && $this->_conditions = [];
 
@@ -742,16 +786,21 @@ class MY_Model extends CI_Model
     /**
      * print_query 打印最后一条查询语句
      *
+     * @return $this
+     *
      * @author wangnan <wangnanphp@163.com>
      * @date   2016-11-14 13:12:12
      */
     public function print_query()
     {
         echo $this->last_query();
+        return $this;
     }
 
     /**
      * print_query_error 打印查询错误
+     *
+     * @return $this
      *
      * @author wangnan <wangnanphp@163.com>
      * @date   2016-11-14 13:13:41
@@ -759,6 +808,7 @@ class MY_Model extends CI_Model
     public function print_query_error()
     {
         var_dump($this->db->error());
+        return $this;
     }
 
     /**
@@ -821,7 +871,6 @@ class MY_Model extends CI_Model
         return $this;
     }
 
-
     /**
      * setTable
      *
@@ -831,8 +880,39 @@ class MY_Model extends CI_Model
      * @author haokaiyang
      * @date   2016-11-22 09:49:00
      */
-    public function setTable(string $table_name){
+    public function setTable(string $table_name)
+    {
         $this->_table = $table_name;
+        return $this;
+    }
+
+    /**
+     * setLeftJoin
+     *
+     * @param array $leftJoin
+     * @return MY_Model
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date   2016-11-29 13:21:18
+     */
+    public function setLeftJoin(array $leftJoin)
+    {
+        $this->_leftJoin = $leftJoin;
+        return $this;
+    }
+
+    /**
+     * setRightJoin
+     *
+     * @param array $rightJoin
+     * @return MY_Model
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date   2016-11-29 13:21:34
+     */
+    public function setRightJoin(array $rightJoin)
+    {
+        $this->_rightJoin = $rightJoin;
         return $this;
     }
 }

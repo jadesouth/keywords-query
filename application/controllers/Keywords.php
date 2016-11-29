@@ -99,4 +99,41 @@ class Keywords extends Home_Controller
             $this->load_view();
         }
     }
+
+    /**
+     * apply 查询权限申请
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date 2016-11-27 22:00:41
+     */
+    public function apply()
+    {
+        if('post' == $this->input->method()) {
+            $this->load->library('form_validation');
+            if(false === $this->form_validation->run()) {
+                http_ajax_response(1, $this->form_validation->error_string());
+            } else {
+                $insert_data = [
+                    'user_id'    => $this->_loginUser['id'],
+                    'phone'      => $_POST['phone'],
+                    'qq'         => $_POST['qq'],
+                    'email'      => $_POST['email'],
+                    'apply_time' => date('Y-m-d H:i:s'),
+                ];
+                // 插入申请数据
+                $this->load->model('detection_apply_info_model');
+                $res = $this->detection_apply_info_model
+                    ->setInsertData($insert_data)
+                    ->create();
+                if(false !== $res) {
+                    http_ajax_response(0, '申请成功，我们会及时联系您给您开通权限！');
+                } else {
+                    http_ajax_response(2, '申请失败，请稍后再试！');
+                }
+            }
+        } else {
+            $this->_headerViewVar['title'] = '检测权限申请';
+            $this->load_view();
+        }
+    }
 }

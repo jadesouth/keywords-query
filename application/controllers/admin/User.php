@@ -40,7 +40,7 @@ class User extends Admin_Controller
         if (! empty($count)) {
             // Page configure
             $this->load->library('pagination');
-            $config['base_url'] = base_url("user/index");
+            $config['base_url'] = base_url("admin/user/index");
             $config['total_rows'] = (int)$count;
             $this->pagination->initialize($config);
             $this->_viewVar['page'] = $this->pagination->create_links();
