@@ -106,7 +106,7 @@ class Articles extends Home_Controller
         // model
         $this->load->model('article_model');
         // 获取记录总条数
-        $Conditions = ['cid'=>1];
+        $Conditions = ['AND'=>['cid'=>1,'status !='=>1]];
         $this->article_model->setConditions($Conditions);
         $count = $this->article_model->count(false);
         if(! empty($count)) {
