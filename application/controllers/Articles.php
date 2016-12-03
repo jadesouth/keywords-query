@@ -99,7 +99,7 @@ class Articles extends Home_Controller
         // 分页页码
         $page = 0 >= $page ? 1 : $page;
         // view data
-        $this->_headerViewVar['h1_title'] = '文章列表';
+        $this->_headerViewVar['title'] = '咨询列表';
         $this->_headerViewVar['method_name'] = __FUNCTION__;
         $this->_viewVar['table_header'] = ['文章标题', '短标题'];
 
@@ -122,7 +122,6 @@ class Articles extends Home_Controller
                 ->getPage($page, ADMIN_PAGE_SIZE);
 
         }
-        //print_r($this->_viewVar);die;
         // 加载视图
         $this->load_view();
     }
