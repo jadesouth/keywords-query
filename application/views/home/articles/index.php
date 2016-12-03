@@ -1,6 +1,8 @@
 <link href="<?=base_url()?>resources/assets/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <script src="<?=base_url()?>resources/assets/libs/bootstrap/js/bootstrap.min.js"></script>
+
 <div class="m-width">
+<div class="table-responsive">
     <table class="table table-hover table-striped">
         <tbody>
         <?php
@@ -21,4 +23,5 @@
         </tbody>
     </table>
     <?php if(! empty($page)){echo $page;}?>
+</div>
 </div>

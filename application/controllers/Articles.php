@@ -122,7 +122,7 @@ class Articles extends Home_Controller
                 ->getPage($page, ADMIN_PAGE_SIZE);
 
         }
-
+        //print_r($this->_viewVar);die;
         // 加载视图
         $this->load_view();
     }

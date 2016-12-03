@@ -36,7 +36,6 @@
             <a <?='advertising' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('keywords/advertising')?>">广告法检测</a>
             <a <?='address' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('keywords/address')?>">地址检测</a>
             <a <?='about' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('articles/about')?>">关于我们</a>
-            <a <?='index' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('articles/index')?>">最新咨询</a>
         </div>
     </div>
 </div>

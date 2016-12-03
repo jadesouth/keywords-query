@@ -19,7 +19,7 @@ class Articles extends Admin_Controller
         // view data
         $this->_headerViewVar['h1_title'] = '文章列表';
         $this->_headerViewVar['method_name'] = __FUNCTION__;
-        $this->_viewVar['table_header'] = ['#', '文章标题', '所属类型', '短标题', '状态', '操作'];
+        $this->_viewVar['table_header'] = ['#', '文章标题','描述', '状态', '操作'];
 
         // model
         $this->load->model('article_model');
@@ -36,7 +36,7 @@ class Articles extends Admin_Controller
             $this->_viewVar['page'] = $this->pagination->create_links();
             // get page data
             $this->_viewVar['data'] = $this->article_model
-                ->setSelectFields('id,title,cid,subtitle,status')
+                ->setSelectFields('id,title,resume,status')
                 ->getPage($page, ADMIN_PAGE_SIZE);
 
         }
