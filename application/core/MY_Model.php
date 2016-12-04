@@ -10,7 +10,7 @@
  * @date   2016-11-11 00:41:28
  */
 /**
- * Class MY_Controller 控制器基类
+ * Class MY_Model 模型基类
  * @property CI_DB_forge $dbforge
  * @property CI_Benchmark $benchmark
  * @property CI_Calendar $calendar
