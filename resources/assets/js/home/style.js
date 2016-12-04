@@ -220,3 +220,13 @@ $(".btn-change-password").click(function () {
         }
     });
 });
+
+$(".btn-leave-message").click(function () {
+    var host = window.location.host;
+    layer.open({
+        title:false,
+        type: 2,
+        content: ['http://'+host+'/messages', 'no'],
+        area: ['450px', '375px']
+    });
+});
