@@ -1,18 +1,17 @@
 <link href="<?=base_url()?>resources/assets/libs/bootstrap/css/bootstrap-combined.min.css" rel="stylesheet">
 <div class="m-width ui-draggable">
-    <div class="container-fluid" style=" background-color: #c7dec6;border: 1px solid #000;border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom-left-radius: 10px;border-bottom-right-radius: 10px;">
+    <span style="margin-left:35px;" class="layui-breadcrumb">
+        <a href="<?=base_url()?>">首页</a>
+        <a href="<?=base_url('articles/index')?>">最近咨询</a>
+        <a><cite><?=$data['title']?></cite></a>
+    </span>
+    <div class="container-fluid">
         <div class="row-fluid">
-            <div class="span10" style="padding: 20px;">
-                <h3 class="text-info text-left">
-                    <?=$data['title']?>
-                </h3>
-                <p>
+            <div class="span10" style="margin:20px 10px;width:100%;">
+                <h3 class="text-center"><?=$data['title']?></h3>
+                <p class="text-center">
                     作者：<?=$data['author']?>
-                </p>
-                <p>
                     时间：<?=date('Y年m月d日 H:i',strtotime($data['created_at']))?>
-                </p>
-                <p>
                     来源：<?=$data['source']?>
                 </p>
             </div>

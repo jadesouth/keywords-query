@@ -118,7 +118,7 @@ class Articles extends Home_Controller
             $this->_viewVar['page'] = $this->pagination->create_links();
             // get page data
             $this->_viewVar['data'] = $this->article_model
-                ->setSelectFields('id,title,resume,subtitle')
+                ->setSelectFields('id,title,resume,subtitle,updated_at')
                 ->getPage($page, ADMIN_PAGE_SIZE);
 
         }

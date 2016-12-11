@@ -9,6 +9,7 @@
  * @property CI_Input                      $input
  * @property CI_Pagination                 $pagination
  * @property CI_Session                    $session
+ * @property Article_model                 $article_model
  * @property Detection_apply_info_model    $detection_apply_info_model
  *
  * @author wangnan <wangnanphp@163.com>

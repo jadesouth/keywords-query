@@ -173,7 +173,7 @@ class Article extends Admin_Controller
             $article_info['cid']           = '2';           //所属类型id[1:日本,2:韩国3:欧美]
             $article_info['source']        = '1';           //来源[1:后台录入,2:网上抄袭]
             $article_info['author']        = 'admin';       //作者
-            $article_info['resume']        = '业务介绍';      //摘要
+            $article_info['resume']        = empty($_POST['resume']) ? '业务介绍' : (string)$_POST['resume'];      //摘要
             $article_info['pub_date']      = time();        //发表日期
             $article_info['content']       = $_POST['content'];     //文章内容
             $article_info['status']        = $_POST['status'];      //状态[0:正常]
@@ -230,7 +230,7 @@ class Article extends Admin_Controller
             $article_info['cid']           = '2';           //所属类型id[1:日本,2:韩国3:欧美]
             $article_info['source']        = '1';           //来源[1:后台录入,2:网上抄袭]
             $article_info['author']        = 'admin';       //作者
-            $article_info['resume']        = '合作案例';      //摘要
+            $article_info['resume']        = empty($_POST['resume']) ? '合作案例' : (string)$_POST['resume'];      //摘要
             $article_info['pub_date']      = time();        //发表日期
             $article_info['content']       = $_POST['content'];     //文章内容
             $article_info['status']        = $_POST['status'];      //状态[0:正常]
@@ -287,7 +287,7 @@ class Article extends Admin_Controller
             $article_info['cid']           = '2';           //所属类型id[1:日本,2:韩国3:欧美]
             $article_info['source']        = '1';           //来源[1:后台录入,2:网上抄袭]
             $article_info['author']        = 'admin';       //作者
-            $article_info['resume']        = '知识产权服务';      //摘要
+            $article_info['resume']        = empty($_POST['resume']) ? '知识产权服务' : (string)$_POST['resume'];      //摘要
             $article_info['pub_date']      = time();        //发表日期
             $article_info['content']       = $_POST['content'];     //文章内容
             $article_info['status']        = $_POST['status'];      //状态[0:正常]
@@ -344,7 +344,7 @@ class Article extends Admin_Controller
             $article_info['cid']           = '2';           //所属类型id[1:日本,2:韩国3:欧美]
             $article_info['source']        = '1';           //来源[1:后台录入,2:网上抄袭]
             $article_info['author']        = 'admin';       //作者
-            $article_info['resume']        = '价格管控';      //摘要
+            $article_info['resume']        = empty($_POST['resume']) ? '价格管控' : (string)$_POST['resume'];    //摘要
             $article_info['pub_date']      = time();        //发表日期
             $article_info['content']       = $_POST['content'];     //文章内容
             $article_info['status']        = $_POST['status'];      //状态[0:正常]
@@ -401,7 +401,7 @@ class Article extends Admin_Controller
             $article_info['cid']           = '2';           //所属类型id[1:日本,2:韩国3:欧美]
             $article_info['source']        = '1';           //来源[1:后台录入,2:网上抄袭]
             $article_info['author']        = 'admin';       //作者
-            $article_info['resume']        = '联系我们';      //摘要
+            $article_info['resume']        = empty($_POST['resume']) ? '联系我们' : (string)$_POST['resume'];   //摘要
             $article_info['pub_date']      = time();        //发表日期
             $article_info['content']       = $_POST['content'];     //文章内容
             $article_info['status']        = $_POST['status'];      //状态[0:正常]

@@ -5,9 +5,9 @@
     <div class="container mp30">
         <div class="row">
             <div class="col-md-12">
-                <div class="panel panel-default">
+                <div class="panel panel-default" style="border-radius:0;">
                     <div class="panel-heading">
-                        <span class="glyphicon glyphicon-list-alt"></span><b>咨詢列表</b>
+                        <span class="glyphicon glyphicon-list-alt"></span>&nbsp;&nbsp;最新动态
                     </div>
                     <div class="panel-body">
                         <div class="row">
@@ -19,15 +19,14 @@
                                             if(! empty($data)){
                                                 foreach($data as $tr) {
                                                     echo '<tr class="info">';
-                                                    echo '<td><img src="http://newtab.firefoxchina.cn/img/sitenav/logo.png" width="60" height="60" class="img-circle" /></td>';
-                                                    echo "<td class='col-xs-2' style='text-align:center'><h4>{$tr['title']}</h4></td>";
-                                                    echo "<td class='col-xs-4' style='text-align:center'><h5>{$tr['title']}</h5></td>";
-                                                    echo "<td class='col-xs-5' style='text-align:center'>{$tr['title']}</td>";
-
-                                                    echo "<td class='col-xs-1' style='text-align:center'><a class='btn btn-info btn-xs' href='" . base_url('index.php/articles/desc/'.$tr['id']) ."'>Read more...</a></td></tr>";
+                                                    echo "<td class='col-xs-1'>{$tr['id']}</td>";
+                                                    echo "<td class='col-xs-4'><h4><a href='" . base_url('index.php/articles/desc/'.$tr['id']) ."'>{$tr['title']}</a></h4></td>";
+                                                    echo "<td class='col-xs-5'>{$tr['resume']}</td>";
+                                                    echo "<td class='col-xs-2' style='text-align: right;'>" . date('Y-m-d', strtotime($tr['updated_at'])) . "</td>";
+                                                    echo "</tr>";
                                                 }
                                             } else {
-                                                echo '<tr><td style="text-align:center;font-size:16px;padding:30px 0px;" colspan="5">暂无数据</td></tr>';
+                                                echo '<tr><td style="text-align:center;font-size:16px;padding:30px 0px;" colspan="4">暂无数据</td></tr>';
                                             }
                                             ?>
                                         </table>

@@ -9,6 +9,12 @@
 <form id="main-form" class="form-horizontal">
     <input type="hidden" name="id" value="<?=$data['id']?>" placeholder="id">
     <div class="form-group">
+        <label for="resume" class="col-sm-2 control-label">首页摘要</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" rows="3" name="resume" id="resume"><?=$data['resume']?></textarea>
+        </div>
+    </div>
+    <div class="form-group">
         <label for="content" class="col-sm-2 control-label">介绍内容</label>
         <div class="col-sm-9">
             <textarea class="" rows="12" placeholder="文章内容" name="content" id="content" style=""><?=$data['content']?></textarea>

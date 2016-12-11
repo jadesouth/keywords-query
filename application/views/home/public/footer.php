@@ -1,8 +1,8 @@
 <div class="footer clearfix">
     <div class="m-width clearfix">
         <div class="fr clearfix">
-            <p class="info">@2015 Anhaotimes Inc All Rights Reserved<span>京ICP备16005139号-1</span></p>
-            <p class="phone">联系客服： 400-9100-665</p>
+            <p class="info">@2016 杭州西今网络科技有限公司 All Rights Reserved<span>浙ICP备16044661号-1</span></p>
+<!--            <p class="phone">联系客服： 123-456-7890</p>-->
         </div>
     </div>
 </div>
@@ -38,7 +38,7 @@
     </div>
 </div>
 <div class="content_mark"></div>
-<div class="qqserver">
+<div class="qqserver" style="z-index:99999;">
     <div class="qqserver_fold">
         <div></div>
     </div>
