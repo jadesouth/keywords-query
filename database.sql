@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `deleted_at` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '删除时间',
   PRIMARY KEY (`id`),
   KEY `login_name` (`login_name`)
-) ENGINE=InooDB DEFAULT CHARSET=utf8 COMMENT '管理员表';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '管理员表';
 
 -- Table: `user` 用户表
 CREATE TABLE IF NOT EXISTS `user` (
