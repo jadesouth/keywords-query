@@ -35,7 +35,7 @@
         <input id="submit" type="button" value="立即登录" class="submit_btn"/>
     </dd>
     <dd>
-        <p>© 2016-2018 xijin.com 版权所有</p>
+        <p>© 2016-2018 wanxiangfuwu.com 版权所有</p>
         <p></p>
     </dd>
 </dl>
