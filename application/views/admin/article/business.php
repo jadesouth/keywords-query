@@ -46,7 +46,7 @@
             </div>
             <div id="success-msg" class="modal-body text-success">操作成功</div>
             <div class="modal-footer">
-                <a href="<?=base_url('index.php/admin/article/'.$method_name)?>" type="button" class="btn btn-primary">继续修改</a>
+                <a href="<?=base_url('admin/article/'.$method_name)?>" type="button" class="btn btn-primary">继续修改</a>
             </div>
         </div>
     </div>

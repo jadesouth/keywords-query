@@ -20,7 +20,7 @@
                                                 foreach($data as $tr) {
                                                     echo '<tr class="info">';
                                                     echo "<td class='col-xs-1'>{$tr['id']}</td>";
-                                                    echo "<td class='col-xs-4'><h4><a href='" . base_url('index.php/articles/desc/'.$tr['id']) ."'>{$tr['title']}</a></h4></td>";
+                                                    echo "<td class='col-xs-4'><h4><a href='" . base_url('articles/desc/'.$tr['id']) ."'>{$tr['title']}</a></h4></td>";
                                                     echo "<td class='col-xs-5'>{$tr['resume']}</td>";
                                                     echo "<td class='col-xs-2' style='text-align: right;'>" . date('Y-m-d', strtotime($tr['updated_at'])) . "</td>";
                                                     echo "</tr>";

@@ -69,8 +69,8 @@
             </div>
             <div id="success-msg" class="modal-body text-success">操作成功</div>
             <div class="modal-footer">
-                <a href="<?=base_url('index.php/admin/articles/index')?>" type="button" class="btn btn-default">返回列表</a>
-                <a href="<?=base_url('index.php/admin/articles/add')?>" type="button" class="btn btn-primary">继续添加</a>
+                <a href="<?=base_url('admin/articles/index')?>" type="button" class="btn btn-default">返回列表</a>
+                <a href="<?=base_url('admin/articles/add')?>" type="button" class="btn btn-primary">继续添加</a>
             </div>
         </div>
     </div>
@@ -86,7 +86,7 @@
     $('#main-submit').click(function(){
         $.ajax({
             type: "POST",
-            url: "<?=base_url('index.php/admin/articles/add')?>",
+            url: "<?=base_url('admin/articles/add')?>",
             data: $("#main-form").serialize(),
             dataType: "json",
             success: function(response){
