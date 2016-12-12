@@ -83,9 +83,9 @@ a{color: #333;hide-focus: expression( this.hideFocus=true );outline: none;}
 .flickerplate .arrow-navigation .arrow {display:block;height:100%;width:90%;-webkit-transition:all 0.2s ease-out;-moz-transition:all 0.2s ase-out;-o-transition:all 0.2s ease-out;-ms-transition:all 0.2s ease-out;transition:all 0.2s ease-out}
 .flickerplate .arrow-navigation:hover, .flickerplate .arrow-navigation .arrow:hover {cursor:pointer}
 .flickerplate .arrow-navigation.left {left:0%}
-.flickerplate .arrow-navigation.left .arrow {opacity:0;margin:0px 0px 0px 50%;background-image:url("../images/flickerplate/arrow-left-light.png");background-repeat:no-repeat;background-position:left}
+.flickerplate .arrow-navigation.left .arrow {opacity:0;margin:0px 0px 0px 50%;background-image:url("../../images/flickerplate/arrow-left-light.png");background-repeat:no-repeat;background-position:left}
 .flickerplate .arrow-navigation.right {right:0%}
-.flickerplate .arrow-navigation.right .arrow {opacity:0;margin:0px 0px 0px -50%;background-image:url("../images/flickerplate/arrow-right-light.png");background-repeat:no-repeat;background-position:right}
+.flickerplate .arrow-navigation.right .arrow {opacity:0;margin:0px 0px 0px -50%;background-image:url("../../images/flickerplate/arrow-right-light.png");background-repeat:no-repeat;background-position:right}
 .flickerplate .arrow-navigation.left.hover .arrow {opacity:1;margin:0px 0px 0px 20%}
 .flickerplate .arrow-navigation.right.hover .arrow {opacity:1;margin:0px 0px 0px -20%}
 .flickerplate .dot-navigation {position:absolute;bottom:15px;width:100%;text-align:center;z-index:100}
@@ -96,8 +96,8 @@ a{color: #333;hide-focus: expression( this.hideFocus=true );outline: none;}
 .flickerplate .dot-navigation .dot.active {background-color:#407ae5}
 .flickerplate .dot-navigation.left, .flickerplate .dot-navigation.left ul {text-align:left}
 .flickerplate .dot-navigation.right, .flickerplate .dot-navigation.right ul {text-align:right}
-.flickerplate.flicker-theme-dark .arrow-navigation.left .arrow {background-image:url("../images/flickerplate/arrow-left-dark.png")}
-.flickerplate.flicker-theme-dark .arrow-navigation.right .arrow {background-image:url("../images/flickerplate/arrow-right-dark.png")}
+.flickerplate.flicker-theme-dark .arrow-navigation.left .arrow {background-image:url("../../images/flickerplate/arrow-left-dark.png")}
+.flickerplate.flicker-theme-dark .arrow-navigation.right .arrow {background-image:url("../../images/flickerplate/arrow-right-dark.png")}
 .flickerplate.flicker-theme-dark .dot-navigation .dot {background-color:rgba(0, 0, 0, 0.12)}
 .flickerplate.flicker-theme-dark .dot-navigation .dot:hover {background-color:rgba(0, 0, 0, 0.6)}
 .flickerplate.flicker-theme-dark .dot-navigation .dot.active {background-color:#000}
@@ -227,7 +227,7 @@ a{color: #333;hide-focus: expression( this.hideFocus=true );outline: none;}
 .doc_list_top p span{float:left; height:28px; font-size:14px; cursor:pointer; border:solid 1px #e2eeff; background:#f3f8ff; color:#3073ce; margin:10px 5px 0 0; padding:0 5px 0 12px;}
 .doc_list_top p span:hover{ border:solid 1px d25432; background-color:#fff}
 .doc_list_top p span a{ color:#3073ce; text-decoration:none; float:left; margin-left:2px; display:inline}
-.doc_list_top p span em{ float:right; width:20px; height:20px; background:url(../images/doc_search_close.png) left center no-repeat; margin:4px 0 0 12px; }
+.doc_list_top p span em{ float:right; width:20px; height:20px; background:url(../../images/doc_search_close.png) left center no-repeat; margin:4px 0 0 12px; }
 .doc_list_top p i{ float:right; color:#999999; font-size:14px;}
 .doc_list_top dl{ padding:3px 0 0; line-height:30px; overflow:hidden;}
 .doc_list_top dl dt{ font-size:16px; float:left; width:160px; background:#f3f8ff; border:1px solid #e2eeff; height:90px; line-height:90px; text-align:center; color:#3073ce;}
@@ -304,7 +304,7 @@ a{color: #333;hide-focus: expression( this.hideFocus=true );outline: none;}
 .doc-star dt span{ float:left;-moz-border-radius: 50%;-webkit-border-radius: 50%;border-radius:50%; width:69px; height:69px; background:#97bcff; text-align:center;color:#fff; font-size:24px; margin-right:30px;}
 .doc-star dd{ height:40px; color:#666;}
 .doc-star dd span{ float:left; font-size:16px; margin-right:28px;}
-.star0{ float:left; width:96px; background:url(../images/ico-star.png) no-repeat;background-position:0 -84px; height:14px; overflow:hidden; margin-top:5px;}
+.star0{ float:left; width:96px; background:url(../../images/ico-star.png) no-repeat;background-position:0 -84px; height:14px; overflow:hidden; margin-top:5px;}
 .star1{ background-position:0 -68px;}
 .star2{ background-position:0 -51px;}
 .star3{ background-position:0 -33px;}
