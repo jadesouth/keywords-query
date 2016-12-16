@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS `user_profile` (
 -- Table: `keywords` 关键字词汇表
 CREATE TABLE IF NOT EXISTS `keywords` (
   `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'PK',
-  `type` TINYINT(4) NOT NULL DEFAULT 0 COMMENT '类型[1:广告法,2:会员地址]',
+  `type` TINYINT(4) NOT NULL DEFAULT 0 COMMENT '类型[1:广告法,2:会员地址,3:旺旺ID,4:手机号码]',
   `word` VARCHAR(600) NOT NULL DEFAULT '' COMMENT '关键词',
   `status` TINYINT(4) NOT NULL DEFAULT 0 COMMENT  '状态:[0:正常]',
   `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -122,3 +122,33 @@ CREATE TABLE IF NOT EXISTS `leave_message` (
   KEY `user_id` (`user_id`),
   KEY `status` (`status`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '留言信息表';
+
+-- TABLE: `dict_area` 国家地区字典表
+CREATE TABLE IF NOT EXISTS `dict_area` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'PK',
+  `pid` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT '父ID',
+  `level` TINYINT NOT NULL DEFAULT 1 COMMENT '区域级别[1:省,2:市,3:县]',
+  `name` VARCHAR(100) NOT NULL DEFAULT '' COMMENT '地区名称',
+  `status` TINYINT NOT NULL DEFAULT 0 COMMENT '状态[0:正常].',
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `deleted_at` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '删除时间',
+  PRIMARY KEY (`id`),
+  KEY `pid` (`pid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '国家地区字典表';
+
+-- TABLE: `address_keywords` 地址关键字词汇表
+CREATE TABLE IF NOT EXISTS `address_keywords` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'PK',
+  `province_id` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'FK:dict_area id 省份ID',
+  `city_id` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'FK:dict_area id 市区ID',
+  `county_id` INT UNSIGNED NOT NULL DEFAULT 0 COMMENT 'FK:dict_area id 县城ID',
+  `address` VARCHAR(1000) NOT NULL DEFAULT '' COMMENT '详细地址',
+  `status` TINYINT NOT NULL DEFAULT 0 COMMENT '状态[0:正常].',
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `deleted_at` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '删除时间',
+  PRIMARY KEY (`id`),
+  KEY `province_city_county` (`province_id`, `city_id`, `county_id`),
+  KEY `address` (`address`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '地址关键字词汇表';

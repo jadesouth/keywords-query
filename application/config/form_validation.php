@@ -25,9 +25,15 @@ $config = [
         ['field' => 'password', 'label' => '登录密码', 'rules' => 'trim|min_length[6]|max_length[18]'],
         ['field' => 'lock', 'label' => '是否禁用', 'rules' => 'trim|in_list[0,1]'],
     ],
-    'admin/keywords/add' => [ // 添加管理员
+    'admin/keywords/add' => [ // 添加关键字
         ['field' => 'type', 'label' => '关键字类型', 'rules' => 'trim|required|in_list[1,2]'],
         ['field' => 'word', 'label' => '关键字', 'rules' => 'trim|required'],
+    ],
+    'keywords/addAddress' => [ // 添加地址关键字
+        ['field' => 'province', 'label' => '省份', 'rules' => 'trim|required'],
+        ['field' => 'city', 'label' => '市区', 'rules' => 'trim|required'],
+        ['field' => 'county', 'label' => '县城', 'rules' => 'trim|required'],
+        ['field' => 'address', 'label' => '详细地址', 'rules' => 'trim|required'],
     ],
     'keywords/advertising' => [ // 广告法关键字查询
         ['field' => 'contents', 'label' => '内容', 'rules' => 'trim|required'],
