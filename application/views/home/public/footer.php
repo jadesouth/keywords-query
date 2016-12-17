@@ -60,7 +60,7 @@
         <div class="qqserver-footer"><span class="qqserver_icon-alert"></span><a class="text-primary" href="<?=base_url('articles/about')?>" target="_blank">关于我们</a> </div>
     </div>
 </div>
-<button class="btn-leave-message layui-btn" style="display:block;width:30px;height:auto;font-size:20px;padding:5px 0px;line-height: 1.2;">在<br>线<br>留<br>言</button>
+<button class="btn-leave-message layui-btn" style="display:block;height:auto;font-size:14px;padding:15px 8px;line-height:1.2;z-index:100;">在<br>线<br>留<br>言</button>
 <!-- 弹出层部分end -->
 <script src="<?=base_url()?>resources/assets/libs/modernizr-custom/modernizr-custom-v2.7.1.min.js"></script>
 <script src="<?=base_url()?>resources/assets/libs/layui/layui.js" type="application/javascript"></script>

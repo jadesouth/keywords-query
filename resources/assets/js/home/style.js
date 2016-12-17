@@ -227,6 +227,10 @@ $(".btn-leave-message").click(function () {
         title:false,
         type: 2,
         content: ['http://'+host+'/messages', 'no'],
-        area: ['450px', '375px']
+        area: ['450px', '420px'],
+        shade: 0.6,
+        scrollbar: false,
+        resize: false,
+        tipsMore: false
     });
 });
