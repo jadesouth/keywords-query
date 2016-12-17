@@ -240,7 +240,7 @@ class Keywords extends Admin_Controller
      * edit 编辑方法定向到 advertising
      *
      * @param int $id 数据表主键
-     * @return json|void
+     * @return void
      *
      * @author wangnan <wangnanphp@163.com>
      * @date   2016-11-21 22:12:42
