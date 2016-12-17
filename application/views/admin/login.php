@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
-    <title>后台登录-西今科技有限公司</title>
+    <title>后台登录-西今网络有限公司</title>
     <meta name="author" content="DeathGhost" />
     <link href="<?=base_url()?>resources/assets/css/admin/login.css" tppabs="<?=base_url()?>resources/assets/css/admin/login.css" rel="stylesheet" type="text/css">
     <link href="<?=base_url()?>resources/assets/libs/layui/css/layui.css" rel="stylesheet" type="text/css">
@@ -15,7 +15,7 @@
 <form id="login-form">
 <dl class="admin_login">
     <dt>
-        <strong>西今科技后台管理系统</strong>
+        <strong>西今网络后台管理系统</strong>
         <em>Management System</em>
     </dt>
     <dd class="user_icon">

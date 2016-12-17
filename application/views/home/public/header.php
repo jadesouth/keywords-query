@@ -26,7 +26,7 @@
 
 <div class="header clearfix">
     <div class="m-width clearfix">
-        <div class="h-logo fl"><i class="fl"><a href=""><img src="/resources/assets/images/logo.png"/></a></i>西今科技</div>
+        <div class="h-logo fl"><i class="fl"><a href=""><img src="/resources/assets/images/logo.png"/></a></i>西今网络</div>
         <div class="h-hot-menu fl">
             <a <?='index' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url()?>">首页</a>
             <a <?='business' == $method_name ? 'class="menu-hover"' : ''?> href="<?=base_url('articles/business')?>">业务介绍</a>
