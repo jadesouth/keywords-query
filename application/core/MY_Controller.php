@@ -9,8 +9,10 @@
  * @property CI_Input                      $input
  * @property CI_Pagination                 $pagination
  * @property CI_Session                    $session
+ * @property Address_keywords_model        $address_keywords_model
  * @property Article_model                 $article_model
  * @property Detection_apply_info_model    $detection_apply_info_model
+ * @property Dict_area_model               $dict_area_model
  *
  * @author wangnan <wangnanphp@163.com>
  * @date   2016-11-11 00:42:03
