@@ -178,7 +178,7 @@ class Admin_Controller extends MY_Controller
         // 获取默认视图,默认取与调用此方法的方法同名的视图
         if(empty($view)) {
             $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 2);
-            $view = $this->_className . '/' .$backtrace[1]['function'];
+            $view = $this->_className . '/' . $backtrace[1]['function'];
         }
 
         // 将分配给_viewVar的视图数据和传入的视图数据合并,如果有相同键名则覆盖_viewVar的键值

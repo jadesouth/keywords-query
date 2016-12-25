@@ -26,7 +26,7 @@ $config = [
         ['field' => 'lock', 'label' => '是否禁用', 'rules' => 'trim|in_list[0,1]'],
     ],
     'admin/keywords/add' => [ // 添加关键字
-        ['field' => 'type', 'label' => '关键字类型', 'rules' => 'trim|required|in_list[1,2]'],
+        ['field' => 'type', 'label' => '关键字类型', 'rules' => 'trim|required|in_list[1,2,3,4]'],
         ['field' => 'word', 'label' => '关键字', 'rules' => 'trim|required'],
     ],
     'keywords/addAddress' => [ // 添加地址关键字
