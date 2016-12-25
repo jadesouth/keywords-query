@@ -39,7 +39,10 @@ $config = [
         ['field' => 'contents', 'label' => '内容', 'rules' => 'trim|required'],
     ],
     'keywords/address' => [ // 地址关键字查询
-        ['field' => 'contents', 'label' => '内容', 'rules' => 'trim|required'],
+        ['field' => 'province', 'label' => '省份', 'rules' => 'trim|required'],
+        ['field' => 'city', 'label' => '市', 'rules' => 'trim|required'],
+        ['field' => 'county', 'label' => '区/县', 'rules' => 'trim|required'],
+        ['field' => 'address', 'label' => '详细地址', 'rules' => 'trim|required'],
     ],
     'keywords/apply' => [ // 关键字查询申请
         ['field' => 'phone', 'label' => '手机号码', 'rules' => 'trim|required|is_natural_no_zero|integer'],

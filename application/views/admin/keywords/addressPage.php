@@ -153,7 +153,6 @@
                             option += '<option value="' + response.data[i]["id"] + '">' + response.data[i]["name"] + "</option>";
                         }
                         $("select[name='county']").append(option);
-                        console.log(option);
                         $("#county-swap").show();
                     } else {
                         layer.alert(response.msg, {icon: 2});

@@ -54,6 +54,13 @@
                         });
                         $('#apply-form')[0].reset();
                         return true;
+                    } else if(-1 == data.status) {
+                        layer.confirm('请您先登录', {
+                            icon: 0,
+                            title: '未登录',
+                            btn: ['确认']
+                        });
+                        return false;
                     } else {
                         layer.alert(data.msg, {
                             icon: 2,

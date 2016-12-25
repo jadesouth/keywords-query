@@ -55,10 +55,10 @@ class Keywords extends Home_Controller
     }
 
     /**
-     * address 地址关键字操作页面
+     * address 地址/旺旺/phone关键字操作页面
      *
      * @author wangnan <wangnanphp@163.com>
-     * @date   2016-11-23 17:33:47
+     * @date   2016-12-25 20:58:30
      */
     public function address()
     {
@@ -66,7 +66,102 @@ class Keywords extends Home_Controller
         if('post' == $this->input->method()) {
             // 检测登录
             if (! $this->is_login()) {
-                http_ajax_response(-1, '请您先登录');
+                http_ajax_response(-1, '请您先登陆');
+                return false;
+            }
+            if(0 != $this->_loginUser['status']) {
+                http_ajax_response(2, '您当前无查询权限');
+                return false;
+            }
+            $this->load->library('form_validation');
+            if(false === $this->form_validation->run()) {
+                http_ajax_response(1, $this->form_validation->error_string());
+            } else {
+                // 获取要被匹配查询的地址信息
+                $province_id = (int)$this->input->post('province');
+                $city_id = (int)$this->input->post('city');
+                $county_id = (int)$this->input->post('county');
+                $address = (string)htmlentities($_POST['address']);
+                // 查询地址关键字信息
+                $this->load->model('dict_area_model');
+                $condition = [
+                    'province_id' => $province_id,
+                    'city_id' => $city_id,
+                    'county_id' => $county_id,
+                    'address' => $address,
+                    'status' => 0
+                ];
+                $count = $this->dict_area_model
+                    ->setAndCond($condition)
+                    ->count();
+                // 查询出省市县名称
+                $this->load->model('dict_area_model');
+                $areas = $this->dict_area_model
+                    ->setSelectFields('id,name')
+                    ->setAndCond(['id []' => [$province_id, $city_id, $county_id], 'status' => 0])
+                    ->read();
+                if (! empty($areas)) {
+                    $area = array_column($areas, 'name', 'id');
+                }
+                $province_name = empty($area[$province_id]) ? '' : $area[$province_id];
+                $city_name = empty($area[$city_id])? '' : $area[$city_id];
+                $county_name = empty($area[$county_id]) ? '' : $area[$county_id];
+                if( 0 >= $count) {
+                    $contents = $province_name . $city_name . $county_name;
+                    $contents .= '<br />' . $address;
+                } else {
+                    $contents = '<span style="color:red">' . $province_name . $city_name . $county_name . '</span>';
+                    $contents .= '<br />' . '<span style="color:red">' . $address . '</span>';
+                }
+
+                // 查询旺旺关键字
+                $wangwang = $this->input->post('wangwang');
+                if (! empty($wangwang)) {
+                    $keywords[] = $wangwang;
+                }
+                // 查询电话关键字
+                $phone = $this->input->post('phone');
+                if (! empty($phone)) {
+                    $keywords[] = $phone;
+                }
+                if (! empty($keywords)) {
+                    $words = $this->_model
+                        ->setSelectFields('word')
+                        ->setAndCond(['words []' => $keywords, 'type' => 3, 'status' => 0])
+                        ->read();
+                }
+                if (! $words) {
+                    $words
+                    $contents = '<span style="color:red">' . $words . '</span>';
+                }
+
+                $contents = '<p style="padding:20px 10px;line-height:150%">' . $contents . '</p>';
+                http_ajax_response(0, 'ok', ['contents' => $contents]);
+            }
+        } else {
+            // 获取省份地址信息
+            $this->load->model('dict_area_model');
+            $this->_viewVar['provinces'] = $this->dict_area_model
+                ->setSelectFields('id,name')
+                ->setAndCond(['level' => 1, 'status' => 0])
+                ->read();
+            $this->load_view();
+        }
+    }
+
+    /**
+     * onlyAddress 单独地址关键字操作页面
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date   2016-11-23 17:33:47
+     */
+    public function onlyAddress()
+    {
+        $this->_headerViewVar['title'] = '地址关键字检测';
+        if('post' == $this->input->method()) {
+            // 检测登录
+            if (! $this->is_login()) {
+                http_ajax_response(-1, '请您先登陆');
                 return false;
             }
             if(0 != $this->_loginUser['status']) {
@@ -109,6 +204,11 @@ class Keywords extends Home_Controller
     public function apply()
     {
         if('post' == $this->input->method()) {
+            // 检测登录
+            if (! $this->is_login()) {
+                http_ajax_response(-1, '请您先登陆');
+                return false;
+            }
             $this->load->library('form_validation');
             if(false === $this->form_validation->run()) {
                 http_ajax_response(1, $this->form_validation->error_string());

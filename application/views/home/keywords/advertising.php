@@ -51,7 +51,14 @@ $(function() {
                         content: data.data.contents
                     });
                     return true;
-                } else {
+                } else if(-1 == data.status) {
+                    layer.confirm('请您先登录', {
+                        icon: 0,
+                        title: '未登录',
+                        btn: ['确认']
+                    });
+                    return false;
+                } else if(2 == data.status) {
                     layer.confirm('您暂无查询权限，是否申请？', {
                         icon: 3,
                         title: '无查询权限',
@@ -59,7 +66,12 @@ $(function() {
                     }, function(){
                         window.location.href = "<?=base_url('/keywords/apply')?>"
                     });
-                    return false;
+                } else {
+                    layer.confirm(data.msg, {
+                        icon: 3,
+                        title: '错误',
+                        btn: ['确认']
+                    });
                 }
             }
         });
