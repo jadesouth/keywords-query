@@ -112,7 +112,7 @@
                             for(var i in response.data) {
                                 option += '<option value="' + response.data[i]["id"] + '">' + response.data[i]["name"] + "</option>";
                             }
-                            $("select[name='city']").append(option);
+                            $("select[name='city']").empty().append(option);
                             form.render('select');
                         } else {
                             layer.alert(response.msg, {icon: 2});
@@ -133,7 +133,7 @@
                             for(var i in response.data) {
                                 option += '<option value="' + response.data[i]["id"] + '">' + response.data[i]["name"] + "</option>";
                             }
-                            $("select[name='county']").append(option);
+                            $("select[name='county']").empty().append(option);
                             form.render('select');
                         } else {
                             layer.alert(response.msg, {icon: 2});

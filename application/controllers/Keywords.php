@@ -85,7 +85,7 @@ class Keywords extends Home_Controller
                 $county_id = (int)$this->input->post('county');
                 $address = (string)htmlentities($_POST['address']);
                 // 查询地址关键字信息
-                $this->load->model('dict_area_model');
+                $this->load->model('address_keywords_model');
                 $condition = [
                     'province_id' => $province_id,
                     'city_id' => $city_id,
@@ -93,7 +93,7 @@ class Keywords extends Home_Controller
                     'address' => $address,
                     'status' => 0
                 ];
-                $count = $this->dict_area_model
+                $count = $this->address_keywords_model
                     ->setAndCond($condition)
                     ->count();
                 // 查询出省市县名称
@@ -109,48 +109,42 @@ class Keywords extends Home_Controller
                 $city_name = empty($area[$city_id])? '' : $area[$city_id];
                 $county_name = empty($area[$county_id]) ? '' : $area[$county_id];
                 if( 0 >= $count) {
-                    $contents = $province_name . $city_name . $county_name;
-                    $contents .= '<br />' . $address;
+                    $contents = '省市区/县：' . $province_name . $city_name . $county_name;
+                    $contents .= '<br />详细地址：' . $address;
                 } else {
-                    $contents = '<span style="color:red">' . $province_name . $city_name . $county_name . '</span>';
-                    $contents .= '<br />' . '<span style="color:red">' . $address . '</span>';
+                    $contents = '省市区/县：<span style="color:red">' . $province_name . $city_name . $county_name . '</span>';
+                    $contents .= '<br />详细地址：<span style="color:red">' . $address . '</span>';
                 }
 
                 // 查询旺旺关键字
-                $wangwang = $this->input->post('wangwang');
+                $wangwang = (string)htmlentities($this->input->post('wangwang'));
                 if (! empty($wangwang)) {
-                    $keywords[] = $wangwang;
-                    $wangwang_content = '旺旺账号:<span style="color:red">' . $wangwang . '</span>';
+                    $word = $this->_model
+                        ->setSelectFields('word')
+                        ->setAndCond(['word' => $wangwang, 'type' => 3, 'status' => 0])
+                        ->get();
+                    if(! empty($word['word']) && $wangwang == $word['word']) {
+                        $contents .= '<br />旺旺账号：<span style="color:red">' . $wangwang . '</span>';
+                    } else {
+                        $contents .= '<br />旺旺账号：' . $wangwang . '</span>';
+                    }
                 }
                 // 查询电话关键字
-                $phone = $this->input->post('phone');
+                $phone = (string)htmlentities($this->input->post('phone'));
                 if (! empty($phone)) {
-                    $keywords[] = $phone;
-                    $phone_content = '手机号码:<span style="color:red">' . $phone . '</span>';
-                }
-                if (! empty($keywords)) {
-                    $words = $this->_model
+                    $word = $this->_model
                         ->setSelectFields('word')
-                        ->setAndCond(['words []' => $keywords, 'type' => 3, 'status' => 0])
-                        ->read();
-                    if (! $words) {
-                        foreach ($words as $word) {
-                            switch($word) {
-                                case $keywords[0] :
-                                    $wangwang_content = '旺旺账号:<span style="color:red">' . $word . '</span>';
-                                    break;
-                                case $keywords[1] :
-                                    $phone_content = '手机号码:<span style="color:red">' . $word . '</span>';
-                                    break;
-                            }
-                        }
+                        ->setAndCond(['word' => $phone, 'type' => 4, 'status' => 0])
+                        ->get();
+                    if(! empty($word['word']) && $phone == $word['word']) {
+                        $contents .= '<br />手机号码：<span style="color:red">' . $phone . '</span>';
+                    } else {
+                        $contents .= '<br />手机号码：' . $phone . '</span>';
                     }
-
-                    ! empty($wangwang_content) && $contents .= $wangwang_content;
-                    ! empty($phone_content) && $contents .= $phone_content;
                 }
 
-                $contents = '<p style="padding:20px 10px;line-height:150%">' . $contents . '</p>';
+                $contents = '<p style="padding:20px;font-size:14px;line-height:200%;">' . $contents;
+                $contents .= '<div style="padding:0 20px;font-size:10px;">注：匹配到的内容用红色字体表示</div></p>';
                 http_ajax_response(0, 'ok', ['contents' => $contents]);
             }
         } else {
