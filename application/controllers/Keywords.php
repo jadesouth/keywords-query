@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Keywords.php
+ * Class Keywords 关键字查询
  *
  * @author wangnan <wangnanphp@163.com>
  * @date   2016-11-17 15:32:24
@@ -30,27 +30,29 @@ class Keywords extends Home_Controller
             $this->load->library('form_validation');
             if(false === $this->form_validation->run()) {
                 http_ajax_response(1, $this->form_validation->error_string());
-            } else {
-                // 获取要被匹配查询的内容
-                $contents = htmlentities($_POST['contents']);
-                // 查询出所有的广告关键字
-                $keywords = $this->_model
-                    ->setSelectFields('word')
-                    ->setAndCond(['type' => 1, 'status' => 0])
-                    ->read();
-                if(! empty($keywords)) {
-                    $keywords = array_column($keywords, 'word');
-                    $keywords_replace = $keywords;
-                    array_walk($keywords_replace, function(&$v, $k){
-                        $v = '<span style="color:red;">' . $v . '</span>';
-                    });
-                    $contents = str_ireplace($keywords, $keywords_replace, $contents);
-                }
-                $contents = '<p style="padding:20px 10px;line-height:150%">' . $contents . '</p>';
-                http_ajax_response(0, 'ok', ['contents' => $contents]);
+                return false;
             }
+            // 获取要被匹配查询的内容
+            $contents = htmlentities($_POST['contents']);
+            // 查询出所有的广告关键字
+            $keywords = $this->_model
+                ->setSelectFields('word')
+                ->setAndCond(['type' => 1, 'status' => 0])
+                ->read();
+            if(! empty($keywords)) {
+                $keywords = array_column($keywords, 'word');
+                $keywords_replace = $keywords;
+                array_walk($keywords_replace, function(&$v, $k){
+                    $v = '<span style="color:red;">' . $v . '</span>';
+                });
+                $contents = str_ireplace($keywords, $keywords_replace, $contents);
+            }
+            $contents = '<p style="padding:20px 10px;line-height:150%">' . $contents . '</p>';
+            http_ajax_response(0, 'ok', ['contents' => $contents]);
+            return true;
         } else {
             $this->load_view();
+            return true;
         }
     }
 
@@ -118,21 +120,34 @@ class Keywords extends Home_Controller
                 $wangwang = $this->input->post('wangwang');
                 if (! empty($wangwang)) {
                     $keywords[] = $wangwang;
+                    $wangwang_content = '旺旺账号:<span style="color:red">' . $wangwang . '</span>';
                 }
                 // 查询电话关键字
                 $phone = $this->input->post('phone');
                 if (! empty($phone)) {
                     $keywords[] = $phone;
+                    $phone_content = '手机号码:<span style="color:red">' . $phone . '</span>';
                 }
                 if (! empty($keywords)) {
                     $words = $this->_model
                         ->setSelectFields('word')
                         ->setAndCond(['words []' => $keywords, 'type' => 3, 'status' => 0])
                         ->read();
-                }
-                if (! $words) {
-                    $words
-                    $contents = '<span style="color:red">' . $words . '</span>';
+                    if (! $words) {
+                        foreach ($words as $word) {
+                            switch($word) {
+                                case $keywords[0] :
+                                    $wangwang_content = '旺旺账号:<span style="color:red">' . $word . '</span>';
+                                    break;
+                                case $keywords[1] :
+                                    $phone_content = '手机号码:<span style="color:red">' . $word . '</span>';
+                                    break;
+                            }
+                        }
+                    }
+
+                    ! empty($wangwang_content) && $contents .= $wangwang_content;
+                    ! empty($phone_content) && $contents .= $phone_content;
                 }
 
                 $contents = '<p style="padding:20px 10px;line-height:150%">' . $contents . '</p>';
@@ -147,6 +162,7 @@ class Keywords extends Home_Controller
                 ->read();
             $this->load_view();
         }
+        return true;
     }
 
     /**
@@ -193,6 +209,7 @@ class Keywords extends Home_Controller
         } else {
             $this->load_view();
         }
+        return true;
     }
 
     /**
@@ -235,5 +252,6 @@ class Keywords extends Home_Controller
             $this->_headerViewVar['title'] = '检测权限申请';
             $this->load_view();
         }
+        return true;
     }
 }
