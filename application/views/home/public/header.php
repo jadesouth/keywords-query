@@ -7,7 +7,7 @@
     <link href="<?=base_url()?>resources/assets/css/home/style.css" rel="stylesheet">
     <!-- layui -->
     <link href="<?=base_url()?>resources/assets/libs/layui/css/layui.css" rel="stylesheet" type="text/css">
-    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script src="<?=base_url()?>resources/assets/libs/jquery/jquery-1.11.3.min.js" type="application/javascript"></script>
     <link href="<?=base_url()?>resources/assets/libs/qq-chat/css/zzsc.css" rel="stylesheet" type="text/css" />
 </head>
 
