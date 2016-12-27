@@ -116,11 +116,12 @@ a{color: #333;hide-focus: expression( this.hideFocus=true );outline: none;}
 /* 登陆框 */
 .denglu,.register {position: fixed;left: -100%;right:100%;top:0;bottom: 0;text-align: center;font-size: 0; z-index:9999; display:none;}
 .denglu:after,.register:after {content:"";display: inline-block;vertical-align: middle;height: 100%;width: 0;}
-.content{display: inline-block; *display: inline; *zoom:1;    vertical-align: middle;position: relative;right: -100%;}
+.content{display: inline-block; *display: inline; *zoom:1;vertical-align: middle;position: relative;right: -100%;}
 .content_mark{ width:100%; height:100%; position:fixed; left:0; top:0; z-index:555; background:#000; opacity:0.5;filter:alpha(opacity=50); display:none;}
 
-.user_container { border:1px solid #e3efff; background: url(../../images/style/bg-login.png) no-repeat 95px 135px #f3f8ff; height:560px; text-align:left;}
-.user_container dl{ width:573px; float:right;}
+.user_container { border:1px solid #e3efff; background: url(../../images/style/bg-login.png) no-repeat 100px 85px #f3f8ff; height:460px; text-align:left;}
+#wn_register{background: url(../../images/style/bg-register.png) no-repeat 100px 85px #f3f8ff;}
+.user_container dl{ width:473px; float:right;}
 .user_container dl dt{ height:83px;}
 .close span{ float:right; margin:15px 15px 0 0; width:33px; height:33px; background:url(../../images/style/ico.png) no-repeat left -115px; overflow:hidden; text-indent:-20em; cursor:pointer;}
 .user_container dl dt p{ width:428px; height:58px; border:1px solid #dee6f0; background:#fff;}

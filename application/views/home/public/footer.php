@@ -10,10 +10,10 @@
 <!-- 弹出层部分begin -->
 <div class="denglu">
     <div class="content">
-        <div class="m-width clearfix">
+        <div class="m-width clearfix" style="width:1000px;">
             <div class="user_container clearfix">
                 <dl class="clearfix">
-                    <dt class="close"><span>关闭</span></dt>
+                    <dt class="close" style="height:120px;"><span>关闭</span></dt>
                     <dt class="login_name"><p><input style="margin-left: 20px;" type="text" placeholder="请输入您的用户名" value="" /></p></dt>
                     <dt class="password"><p><input style="margin-left: 20px;" type="password" placeholder="请输入密码" value="" /></p></dt>
                     <dd class="su clearfix btn-login"><input type="button" value="登&nbsp;&nbsp;录" /></dd>
@@ -24,8 +24,8 @@
 </div>
 <div class="register" >
     <div class="content">
-        <div class="m-width clearfix">
-            <div class="user_container clearfix">
+        <div class="m-width clearfix" style="width:1000px;">
+            <div id="wn_register" class="user_container clearfix">
                 <dl class="clearfix">
                     <dt class="close"><span>关闭</span></dt>
                     <dt class="login_name"><p><input style="margin-left: 20px;" type="text" placeholder="请输入您的用户名" value="" /></p></dt>
