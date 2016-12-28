@@ -53,7 +53,7 @@ $route['default_controller'] = 'home/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['admin'] = 'admin/keywords/advertising'; // 后台主页
+$route['admin'] = 'admin/detection'; // 后台主页
 $route['admin/login'] = 'admin/manager/login'; // 后台登录
 $route['admin/logout'] = 'admin/manager/logout'; // 后台登出
 $route['admin/index'] = 'admin/admin/index'; // 管理员列表
