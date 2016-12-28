@@ -10,7 +10,7 @@
             foreach($data as $tr) {
                 echo '<tr>';
                 foreach ($tr as $column_name => $td) {
-                    $td = 'img_path' == $column_name ? base_url('resources/uploads/' . $td) : $td;
+                    $td = 'img_path' == $column_name ? '<img src="' . base_url('resources/uploads/' . $td) . '" class="img-rounded" style="width:300px;" />' : $td;
                     $td = 'status' == $column_name ? $status[$td] : $td;
                     if ('status' == $column_name) {
                         if(0 == $td) {
