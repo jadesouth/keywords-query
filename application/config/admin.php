@@ -25,10 +25,18 @@ $config = [
         'table_header' => ['#', '文章标题', '所属类型', '短标题', '状态<br>0:显示,1:隐藏', '操作'],
         'index_field'  => 'id,title,cid,subtitle,status',
     ],
+    // 查询权限申请管理
     'detection' => [
         'name'         => '申请管理',
         'index'        => '申请列表',
         'table_header' => ['#', '申请用户', '电话', 'QQ', 'E-mail', '申请时间', '操作'],
         'index_field'  => 'id,title,cid,subtitle,status',
+    ],
+    // Banner 管理
+    'banner' => [
+        'name'         => 'Banner 管理',
+        'index'        => 'Banner 列表',
+        'table_header' => ['#', 'Banner', '添加时间', '状态', '操作'],
+        'index_field'  => 'id,img_path,created_at,status',
     ],
 ];
