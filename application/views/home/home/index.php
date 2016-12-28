@@ -1,12 +1,14 @@
+<?php if(! empty($banners)):?>
 <div class="banner clearfix">
     <div class="flicker-example" data-block-text="false">
         <ul>
-            <li data-background="<?=base_url('resources/uploads/banners/a.jpg')?>"></li>
-            <li data-background="<?=base_url('resources/uploads/banners/b.jpg')?>"></li>
-            <li data-background="<?=base_url('resources/uploads/banners/c.jpg')?>"></li>
+            <?php  foreach($banners as $banner):?>
+            <li data-background="<?=base_url('resources/uploads/' . $banner['img_path'])?>"></li>
+            <?php endforeach;?>
         </ul>
     </div>
 </div>
+<?php endif;?>
 <div class="m-width">
     <div class="doc_list_l clearfix" style="margin-top:30px;">
         <div class="m-all-ks">

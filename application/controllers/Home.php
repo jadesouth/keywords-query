@@ -17,17 +17,23 @@ class Home extends Home_Controller
     public function index()
     {
         $this->_headerViewVar['title'] = '首页';
+        // 获取Banner图片
+        $this->load->model('banner_model');
+        $condition = [
+            'AND'   => ['status' => 0],
+            'ORDER' => 'id DESC',
+        ];
+        $this->_viewVar['banners'] = $this->banner_model
+            ->setSelectFields('id,img_path')
+            ->setConditions($condition)
+            ->read();
         // 获取各板块内容
         $this->load->model('article_model');
-        $condition = [
-            'AND' => ['id []' => [1, 2, 3, 4]],
-        ];
         $this->_viewVar['areas'] = $this->article_model
             ->setSelectFields('id,resume')
-            ->setAndCond($condition)
+            ->setAndCond(['id []' => [1, 2, 3, 4]])
             ->read();
         // 获取最新动态
-
         $condition = [
             'AND'   => [
                 'cid'    => 1,
