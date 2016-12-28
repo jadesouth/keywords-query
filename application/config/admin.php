@@ -36,6 +36,7 @@ $config = [
     'banner' => [
         'name'         => 'Banner 管理',
         'index'        => 'Banner 列表',
+        'add'          => '添加 Banner',
         'table_header' => ['#', 'Banner', '添加时间', '状态', '操作'],
         'index_field'  => 'id,img_path,created_at,status',
     ],

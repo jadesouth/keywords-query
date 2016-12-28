@@ -29,6 +29,12 @@ $config = [
         ['field' => 'type', 'label' => '关键字类型', 'rules' => 'trim|required|in_list[1,2,3,4]'],
         ['field' => 'word', 'label' => '关键字', 'rules' => 'trim|required'],
     ],
+    'admin/banner/add' => [ // 添加 Banner
+        ['field' => 'banner', 'label' => 'Banner 图片', 'rules' => 'trim|required'],
+    ],
+    'admin/banner/delete' => [ // 删除 Banner
+        ['field' => 'banner', 'label' => 'Banner 图片', 'rules' => 'trim|required'],
+    ],
     'keywords/addAddress' => [ // 添加地址关键字
         ['field' => 'province', 'label' => '省份', 'rules' => 'trim|required'],
         ['field' => 'city', 'label' => '市区', 'rules' => 'trim|required'],

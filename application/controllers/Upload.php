@@ -47,7 +47,7 @@ class Upload extends MY_Controller
             // 获取上传图片的信息
             $upload_file = $this->upload->data();
             $file_path = 'banners/' . $folder_data . '/' . $upload_file['orig_name'];
-            http_ajax_response(0, '课程封面图上传成功', ['banner' => $file_path]);
+            http_ajax_response(0, 'Banner 图片上传成功', ['banner' => $file_path]);
         } else { // failed
             $this->send_failure_msg();
         }
