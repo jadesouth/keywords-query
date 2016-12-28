@@ -50,10 +50,10 @@
             <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=108981378&amp;site=qq&amp;menu=yes" target="_blank">
                     <div>客服咨询</div>
                     <span>琳琳</span> </a> </li>
-            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=108981378&amp;site=qq&amp;menu=yes" target="_blank">
+            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1036323592&amp;site=qq&amp;menu=yes" target="_blank">
                     <div>客服咨询</div>
                     <span>云云</span> </a> </li>
-            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=108981378&amp;site=qq&amp;menu=yes" target="_blank">
+            <li> <a title="点击这里给我发消息" href="http://wpa.qq.com/msgrd?v=3&amp;uin=1036323592&amp;site=qq&amp;menu=yes" target="_blank">
                     <div>推广合作</div>
                     <span class="qqserver-service-alert">单单</span> </a> </li>
         </ul>
