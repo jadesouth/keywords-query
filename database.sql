@@ -152,3 +152,14 @@ CREATE TABLE IF NOT EXISTS `address_keywords` (
   KEY `province_city_county` (`province_id`, `city_id`, `county_id`),
   KEY `address` (`address`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT '地址关键字词汇表';
+
+-- TABLE: `banner` banner地址表
+CREATE TABLE IF NOT EXISTS `banner` (
+  `id` INT UNSIGNED NOT NULL AUTO_INCREMENT COMMENT 'PK',
+  `img_path` VARCHAR(1000) NOT NULL DEFAULT '' COMMENT '图片路径',
+  `status` TINYINT NOT NULL DEFAULT 0 COMMENT '状态[0:启用,1:禁用].',
+  `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `updated_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `deleted_at` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' COMMENT '删除时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT 'banner地址表';
