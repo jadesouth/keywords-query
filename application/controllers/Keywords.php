@@ -23,9 +23,15 @@ class Keywords extends Home_Controller
                 http_ajax_response(-1, '请您先登录');
                 return false;
             }
+            // 检测是否有查询权限
             if(0 != $this->_loginUser['status']) {
-                http_ajax_response(2, '您当前无查询权限');
-                return false;
+                $this->load->model('user_model');
+                $status = $this->user_model->getUserStatus($this->_loginUser['id']);
+                if(0 != $status) {
+                    http_ajax_response(2, '您当前无查询权限');
+                    return false;
+                }
+                $this->_loginUser['status'] = $status;
             }
             $this->load->library('form_validation');
             if(false === $this->form_validation->run()) {
@@ -71,9 +77,15 @@ class Keywords extends Home_Controller
                 http_ajax_response(-1, '请您先登陆');
                 return false;
             }
+            // 检测是否有查询权限
             if(0 != $this->_loginUser['status']) {
-                http_ajax_response(2, '您当前无查询权限');
-                return false;
+                $this->load->model('user_model');
+                $status = $this->user_model->getUserStatus($this->_loginUser['id']);
+                if(0 != $status) {
+                    http_ajax_response(2, '您当前无查询权限');
+                    return false;
+                }
+                $this->_loginUser['status'] = $status;
             }
             $this->load->library('form_validation');
             if(false === $this->form_validation->run()) {
@@ -174,9 +186,15 @@ class Keywords extends Home_Controller
                 http_ajax_response(-1, '请您先登陆');
                 return false;
             }
+            // 检测是否有查询权限
             if(0 != $this->_loginUser['status']) {
-                http_ajax_response(2, '您当前无查询权限');
-                return false;
+                $this->load->model('user_model');
+                $status = $this->user_model->getUserStatus($this->_loginUser['id']);
+                if(0 != $status) {
+                    http_ajax_response(2, '您当前无查询权限');
+                    return false;
+                }
+                $this->_loginUser['status'] = $status;
             }
             $this->load->library('form_validation');
             if(false === $this->form_validation->run()) {

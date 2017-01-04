@@ -14,6 +14,7 @@
  * @property Banner_model                  $banner_model
  * @property Detection_apply_info_model    $detection_apply_info_model
  * @property Dict_area_model               $dict_area_model
+ * @property User_model                    $user_model
  *
  * @author wangnan <wangnanphp@163.com>
  * @date   2016-11-11 00:42:03

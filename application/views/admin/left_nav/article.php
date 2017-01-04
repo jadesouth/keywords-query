@@ -7,7 +7,7 @@
                 <li <?='business' == $method_name ? 'class="active"' : ''?>><a href="<?=base_url('admin/article/business')?>">业务介绍<?='business' == $method_name ? '<span class="sr-only">(current)</span>' : ''?></a></li>
                 <li <?='cases' == $method_name ? 'class="active"' : ''?>><a href="<?=base_url('admin/article/cases')?>">合作案例<?='cases' == $method_name ? '<span class="sr-only">(current)</span>' : ''?></a></li>
                 <li <?='property' == $method_name ? 'class="active"' : ''?>><a href="<?=base_url('admin/article/property')?>">知识产权服务<?='property' == $method_name ? '<span class="sr-only">(current)</span>' : ''?></a></li>
-                <li <?='price' == $method_name ? 'class="active"' : ''?>><a href="<?=base_url('admin/article/price')?>">价格管控<?='price' == $method_name ? '<span class="sr-only">(current)</span>' : ''?></a></li>
+                <li <?='price' == $method_name ? 'class="active"' : ''?>><a href="<?=base_url('admin/article/price')?>">外包服务<?='price' == $method_name ? '<span class="sr-only">(current)</span>' : ''?></a></li>
                 <li <?='about' == $method_name ? 'class="active"' : ''?>><a href="<?=base_url('admin/article/about')?>">联系我们<?='about' == $method_name ? '<span class="sr-only">(current)</span>' : ''?></a></li>
             </ul>
         </div>

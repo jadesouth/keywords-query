@@ -103,4 +103,25 @@ class User_model extends MY_Model
         }
         return $this->leftGet();
     }
+
+    /**
+     * getUserStatus 查询用户查询权限状态
+     *
+     * @param int $user_id 用户ID
+     *
+     * @return int 0:有权限,1:无权限
+     *
+     * @author wangnan <wangnanphp@163.com>
+     * @date 2017-01-04 14:27:38
+     */
+    public function getUserStatus(int $user_id): int
+    {
+        if(0 >= $user_id) {
+            return 1;
+        }
+        $this->_conditions = ['id' => $user_id];
+        $this->_selectFields = 'status';
+        $res = $this->get();
+        return isset($res['status']) ? $res['status'] : 1;
+    }
 }

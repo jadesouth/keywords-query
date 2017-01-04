@@ -21,17 +21,6 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="status" class="col-sm-2 control-label">是否开放</label>
-        <div class="col-sm-9">
-            <label class="radio-inline">
-                <input type="radio" name="status" id="status" value="0" <?=0 == $data['status'] ? 'checked' : ''?>> 开放
-            </label>
-            <label class="radio-inline">
-                <input type="radio" name="status" id="status" value="1" <?=1 == $data['status'] ? 'checked' : ''?>> 隐藏
-            </label>
-        </div>
-    </div>
-    <div class="form-group">
         <div class="col-sm-offset-2 col-sm-9">
             <button id="main-submit" type="button" class="btn btn-primary btn-lg btn-block">提交修改</button>
         </div>
