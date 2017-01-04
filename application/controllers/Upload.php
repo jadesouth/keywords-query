@@ -21,7 +21,7 @@ class Upload extends MY_Controller
         // 设置基础的上传配置
         $this->_config = [
             'upload_path'      => FCPATH . 'resources/uploads/' . date('Ymd', time()),
-            'allowed_types'    => 'zip|7zip|rar|doc|docx|word|xls|xlsx|xl|ppt|pptx|pdf|txt|wma|rm|wav|wmv|avi|mp4|flv|swf|psd|gif|jpg|jpeg|png|bmp',
+//            'allowed_types'    => 'zip|7zip|rar|doc|docx|word|xls|xlsx|xl|ppt|pptx|pdf|txt|wma|rm|wav|wmv|avi|mp4|flv|swf|psd|gif|jpg|jpeg|png|bmp',
             'file_name'        => intval(microtime(true) * 10000),
             'file_ext_tolower' => true, // 文件后缀名将转换为小写
             'max_size'         => 4080,
@@ -38,7 +38,7 @@ class Upload extends MY_Controller
     {
         $folder_data = date('Ymd', time());
         $this->_config['upload_path'] = FCPATH . 'resources/uploads/banners/' . $folder_data;
-        $this->_config['allowed_types'] = 'gif|jpg|jpeg|png|bmp';
+//        $this->_config['allowed_types'] = 'gif|jpg|jpeg|png|bmp';
         $this->_config['max_size'] = 4080;
         // init upload
         $this->upload->initialize($this->_config);
