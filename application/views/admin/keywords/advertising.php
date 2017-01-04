@@ -34,6 +34,10 @@ $(function() {
     $("#add-keywords").click(function() {
         var keyword = $("input[name='keywords']").val();
         if('' == keyword || null == keyword || undefined == keyword) {
+            layer.open({
+                icon: 2,
+                content: '请输入关键字'
+            });
             return;
         }
         $.ajax({
