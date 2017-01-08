@@ -110,8 +110,8 @@ $(".btn-register").click(function () {
         layer.msg('请输入用户名');
         return false;
     }
-    if (!(/^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){4,19}$/).exec(login_name)){
-        layer.msg('请输入5-20位以字母开头的用户名');
+    if (!(/^[a-zA-Z]{1}([a-zA-Z0-9]){4,19}$/).exec(login_name)){
+        layer.msg('用户名由5-20位字母组成');
         return false;
     }
     if (undefined == password || '' == password || false == password) {

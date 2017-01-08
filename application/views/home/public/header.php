@@ -15,11 +15,11 @@
 <div style="width:100%;padding:5px 0;background-color:#333;float:left;">
     <span class="layui-breadcrumb" lay-separator="|" style="float:right;padding-right:6%;color:#FFFFFF">
         <?php if(empty($_SESSION['home_login_user'])){?>
-            <a><span style="color:#FFFFFF;" class="register-btn">注册</span></a>
-            <a><span style="color:#FFFFFF;" class="login-btn">登陆</span></a>
+            <a href="javascript:;" style="cursor:pointer"><span style="color:#FFFFFF;cursor:pointer;" class="register-btn">注册</span></a>
+            <a href="javascript:;" style="cursor:pointer"><span style="color:#FFFFFF;cursor:pointer;" class="login-btn">登陆</span></a>
         <?php }else{ ?>
-            <a href="/user/detail"><span style="color:#FFFFFF;cursor:Default;">个人中心</span></a>
-            <a href="/user/logout"><span style="color:#FFFFFF;cursor:Default;">退出</span></a>
+            <a href="/user/detail" style="cursor:pointer"><span style="color:#FFFFFF;cursor:pointer;"><?=$this->session->home_login_user['login_name']?></span></a>
+            <a href="/user/logout" style="cursor:pointer"><span style="color:#FFFFFF;cursor:pointer;">退出</span></a>
         <?php }?>
     </span>
 </div>

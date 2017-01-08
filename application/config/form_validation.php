@@ -29,6 +29,10 @@ $config = [
         ['field' => 'type', 'label' => '关键字类型', 'rules' => 'trim|required|in_list[1,2,3,4]'],
         ['field' => 'word', 'label' => '关键字', 'rules' => 'trim|required'],
     ],
+    'admin/keywords/search' => [ // 搜索关键字
+        ['field' => 'type', 'label' => '关键字类型', 'rules' => 'trim|required|in_list[1,2,3,4]'],
+        ['field' => 'word', 'label' => '关键字', 'rules' => 'trim|required'],
+    ],
     'admin/banner/add' => [ // 添加 Banner
         ['field' => 'banner', 'label' => 'Banner 图片', 'rules' => 'trim|required'],
     ],

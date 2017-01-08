@@ -28,8 +28,8 @@
             <div id="wn_register" class="user_container clearfix">
                 <dl class="clearfix">
                     <dt class="close"><span>关闭</span></dt>
-                    <dt class="login_name"><p><input style="margin-left: 20px;" type="text" placeholder="请输入您的用户名" value="" /></p></dt>
-                    <dt class="password"><p><input style="margin-left: 20px;" type="password" placeholder="请输入密码" value="" /></p></dt>
+                    <dt class="login_name"><p><input style="margin-left: 20px;width:300px;" type="text" placeholder="请输入您的用户名(5-20位字母)" value="" /></p></dt>
+                    <dt class="password"><p><input style="margin-left: 20px;" type="password" placeholder="请输入密码(6-16位)" value="" /></p></dt>
                     <dt class="con_password"><p><input style="margin-left: 20px;" type="password" placeholder="请重复输入密码" value="" /></p></dt>
                     <dd class="su clearfix btn-register"><input type="button" value="注&nbsp;&nbsp;册" /></dd>
                 </dl>

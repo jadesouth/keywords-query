@@ -283,6 +283,14 @@ class Keywords extends Admin_Controller
 
             $type = $this->input->post('type');
             $word = $this->input->post('word');
+            // 查询关键字是否已经存在
+            $count = $this->_model->setConditions(['type' => $type, 'word' => $word])
+                ->count();
+            if(0 < $count) {
+                http_ajax_response(3, '关键字已经存在,请重新输入!');
+                return false;
+            }
+
             $res = $this->_model
                 ->setInsertData(['type' => $type, 'word' => $word])
                 ->create();
@@ -324,5 +332,39 @@ class Keywords extends Admin_Controller
     public function edit(int $id = 0)
     {
         $this->advertising();
+    }
+
+    /**
+     * search 搜索关键字是否已经存在
+     *
+     * @return bool
+     * @author wangnan <wangnanphp@163.com>
+     * @date   2017-01-08 14:32:25
+     */
+    public function search()
+    {
+        if ('post' == $this->input->method()) {
+            $this->load->helper('http');
+            $this->load->library('form_validation');
+            if (false === $this->form_validation->run()) {
+                http_ajax_response(1, $this->form_validation->error_string());
+                return false;
+            }
+
+            $type = $this->input->post('type');
+            $word = $this->input->post('word');
+            // 查询关键字是否已经存在
+            $count = $this->_model->setConditions(['type' => $type, 'word' => $word])
+                ->count();
+            if(0 < $count) {
+                http_ajax_response(0, '关键字已经存在!', ['status' => 2]);
+            } else {
+                http_ajax_response(0, '关键字不存在!', ['status' => 1]);
+            }
+            return true;
+        } else {
+            http_ajax_response(-1, '非法请求!');
+            return true;
+        }
     }
 }

@@ -102,7 +102,7 @@ class Keywords extends Home_Controller
                     'province_id' => $province_id,
                     'city_id' => $city_id,
                     'county_id' => $county_id,
-                    'address' => $address,
+                    'address %%' => $address,
                     'status' => 0
                 ];
                 $count = $this->address_keywords_model

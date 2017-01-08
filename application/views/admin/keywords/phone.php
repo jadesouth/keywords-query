@@ -9,6 +9,14 @@
                     <button id="add-keywords" class="layui-btn"><i class="layui-icon">&#xe608;</i>&nbsp;&nbsp;添加电话关键字</button>
                 </div>
             </div>
+            <div class="layui-inline" style="margin-left:200px;">
+                <div class="layui-input-inline" style="width:200px;">
+                    <input type="text" name="search-keywords" placeholder="请输入查询关键字" autocomplete="off" class="layui-input">
+                </div>
+                <div class="layui-input-inline" style="width: 100px;">
+                    <button id="search-keywords" class="layui-btn"><i class="layui-icon">&#xe615;</i>&nbsp;&nbsp;查询电话关键字</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
@@ -29,6 +37,38 @@ $(function() {
     // 加载 layui
     layui.use('layer', function(){
         var layer = layui.layer;
+    });
+    // 搜索关键字
+    $("#search-keywords").click(function() {
+        var keyword = $("input[name='search-keywords']").val();
+        if('' == keyword || null == keyword || undefined == keyword) {
+            layer.open({
+                icon: 2,
+                content: '请输入搜索关键字'
+            });
+            return;
+        }
+        $.ajax({
+            type: "POST",
+            url:"<?=base_url('admin/keywords/search')?>",
+            data: {type:4, word:keyword},
+            dataType: "JSON",
+            success: function(data) {
+                if(0 == data.status) {
+                    layer.open({
+                        icon: data.data.status,
+                        content: data.msg
+                    });
+                    return true;
+                } else {
+                    layer.open({
+                        icon: 2,
+                        content: data.msg
+                    });
+                    return false;
+                }
+            }
+        });
     });
     // 添加关键字
     $("#add-keywords").click(function() {
