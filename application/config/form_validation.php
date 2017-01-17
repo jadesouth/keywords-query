@@ -35,6 +35,18 @@ $config = [
     'admin/banner/delete' => [ // 删除 Banner
         ['field' => 'banner', 'label' => 'Banner 图片', 'rules' => 'trim|required'],
     ],
+    'admin/websetting/addProvince' => [ // 添加省份
+        ['field' => 'province', 'label' => '一级区域', 'rules' => 'trim|required'],
+    ],
+    'admin/websetting/addCity' => [ // 添加市区
+        ['field' => 'province', 'label' => '一级区域', 'rules' => 'trim|required'],
+        ['field' => 'city', 'label' => '二级区域', 'rules' => 'trim|required'],
+    ],
+    'admin/websetting/addCounty' => [ // 添加县区
+        ['field' => 'province', 'label' => '一级区域', 'rules' => 'trim|required'],
+        ['field' => 'city', 'label' => '二级区域', 'rules' => 'trim|required'],
+        ['field' => 'county', 'label' => '三级区域', 'rules' => 'trim|required'],
+    ],
     'keywords/addAddress' => [ // 添加地址关键字
         ['field' => 'province', 'label' => '省份', 'rules' => 'trim|required'],
         ['field' => 'city', 'label' => '市区', 'rules' => 'trim|required'],
