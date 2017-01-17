@@ -113,6 +113,7 @@
                                 option += '<option value="' + response.data[i]["id"] + '">' + response.data[i]["name"] + "</option>";
                             }
                             $("select[name='city']").empty().append(option);
+                            $("select[name='county']").empty().append('<option value="">请选择县/区</option>');
                             form.render('select');
                         } else {
                             layer.alert(response.msg, {icon: 2});

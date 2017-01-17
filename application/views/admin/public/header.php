@@ -47,6 +47,7 @@
                 <li<?='user' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/user')?>">用户管理</a></li>
                 <li<?='banner' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/banner')?>">Banner 管理</a></li>
                 <li<?='admin' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/index')?>">管理员管理</a></li>
+                <li<?='websetting' == $controller ? ' class="active"' : ''?>><a href="<?=base_url('admin/websetting/area')?>">网站设置</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right main-nav-user-info">
                 <li class="dropdown">
